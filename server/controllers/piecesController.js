@@ -1,13 +1,17 @@
-const getPieces = (req, res, next) => {
-  
-  const pieceData = {
-    id: "45897aze",
-    title: "piece number one",
-    description: "it is the first piece I've ever created",
-    image: "image's url"
-  }
+const Project = require('../models/project');
 
-  res.status(200).json({ piece: pieceData });
+const getPieces = async (req, res, next) => {
+  
+  let projects;
+  try {
+    projects = await Project.find({});
+
+  } catch (err) {
+    return console.log(err);
+  }
+  console.log(projects);
+
+  res.status(200).json({ projects: projects.map(project => project.toObject({ getters: true })) });
 };
 
 exports.getPieces = getPieces;

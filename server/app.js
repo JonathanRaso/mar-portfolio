@@ -10,6 +10,8 @@ const projectsRoutes = require('./routes/projects-routes');
 
 const app = express();
 
+app.use(bodyParser.json());
+
 app.get('/' , (req, res, next) => {
   res.send('Server Running!!! ')
 })

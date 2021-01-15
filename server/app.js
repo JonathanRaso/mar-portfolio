@@ -15,6 +15,8 @@ const app = express();
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 app.use(bodyParser.json());
 
+TODO://Add express-static middleware to serve images when uploading image will be added
+
 app.get('/' , (req, res, next) => {
   res.send('MAR-portfolio Server Running!!! ')
 })

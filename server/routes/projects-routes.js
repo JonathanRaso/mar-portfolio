@@ -1,5 +1,6 @@
 const express = require('express');
 const { check } = require('express-validator')
+// TODO Create fileUpload middleware and import it here
 
 const projectsController = require('../controllers/projectsController');
 const router = express.Router();
@@ -19,6 +20,7 @@ router.patch(
 router.delete('/:id', projectsController.deleteProject);
 
 router.post(
+  // TODO Add fileUpload middleware for image upload 
   '/add-project',
   [
     check('title')

@@ -1,6 +1,11 @@
+import '../../App.css'
+import './styles.css'
+
 const Infos = () => {
   return (
-    <h2>Infos page</h2>
+    <main className="main__height infos__body">
+      <h2>Infos page</h2>
+    </main>
   )
 };
 

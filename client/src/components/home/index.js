@@ -1,6 +1,46 @@
+import '../../App.css';
+import './styles.css';
+
 const Home = () => {
   return (
-    <h2>Home Page</h2>
+    <main className="homepage__body flex">
+      <div className="card__test">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test2">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test2">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test2">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test2">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test2">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test">
+        <h3>Testing card</h3>
+      </div>
+      <div className="card__test2">
+        <h3>Testing card</h3>
+      </div>
+    </main>
   )
 };
 

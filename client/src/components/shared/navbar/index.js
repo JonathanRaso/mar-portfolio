@@ -1,17 +1,21 @@
 import { Link } from 'react-router-dom';
 
+import '../../../App.css';
+import './styles.css';
+
 const Navbar = () => {
   return (
-    <div>
-      <h1>Navbar For All Pages</h1>
-      <ul>
-        <li>
-          <Link to="/">Réalisations</Link>
-        </li>
-        <li>
-          <Link to="/infos">Infos</Link>
-        </li>
-      </ul>
+    <div className="nav__height container">
+      <nav className="navbar__body">
+        <ul className="navbar__ul flex">
+          <li>
+            <Link to="/">Réalisations</Link>
+          </li>
+          <li>
+            <Link to="/infos">Infos</Link>
+          </li>
+        </ul>
+      </nav>
     </div>
   )
 };

@@ -1,0 +1,27 @@
+nav {
+}
+
+.navbar__body {
+  
+}
+
+.navbar__ul {
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.navbar__ul a{
+  text-decoration: none;
+  color: #333;
+  display: block;
+  margin-top: 2rem;
+  padding: 10px;
+}
+
+.navbar__ul a:hover{
+  background-color: #ccc;
+}
+
+@media screen and (min-width: 768px) {
+  
+}

@@ -7,7 +7,15 @@ const router = express.Router();
 router.get('/', projectsController.getProjects);
 
 router.get('/:id', projectsController.getProjectById);
-router.patch('/:id', projectsController.updateProject);
+router.patch(
+  '/:id',
+  [
+    check('title')
+      .isLength({ min: 3 }),
+    check('description')
+      .isLength({ min: 15 }),  
+  ],
+  projectsController.updateProject);
 router.delete('/:id', projectsController.deleteProject);
 
 router.post(

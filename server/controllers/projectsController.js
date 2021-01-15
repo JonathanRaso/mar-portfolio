@@ -8,9 +8,8 @@ const getProjects = async (req, res, next) => {
   try {
     projects = await Project.find();
   } catch (err) {
-    return console.log(err);
+    return next(new Error("Cannot find projects"));
   }
-  // console.log(projects);
 
   res.status(200).json({ projects: projects.map(project => project.toObject({ getters: true })) });
 };
@@ -23,12 +22,7 @@ const getProjectById = async (req, res, next) => {
   try {
     project = await Project.findById({ _id : projectId });
   } catch (err) {
-    return console.log(err);
-  }
-
-  if (!project) {
-    console.log('This place cannot be found');
-    return next();
+    return next(new Error("Cannot find this specific project"));
   }
 
   res.status(200).json({ project: project.toObject({ getters: true }) });
@@ -42,9 +36,7 @@ const createProject = async (req, res, next) => {
   }
   
   const projectData = req.body;
-  // console.log(projectData);
   const { title, description, imageUrl } = projectData;
-  // console.log(title, description, imageUrl);
 
   const createdProject = new Project({
     title,
@@ -56,43 +48,63 @@ const createProject = async (req, res, next) => {
   try {
     await createdProject.save();
   } catch (err) {
-    return console.log(err);
+    return next(err);
   }
 
   res.status(201).json({ message: "Project has been added!" })
 }
 
 const updateProject = async (req, res, next) => {
+  // Look into the request object and see if there are any validations error based on the config inside projects-routes.js
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error("Invalid inputs passed, please check your data");
+    return next(error);
+  }
+
   // 1 - get id of the project with req.params
   const projectId = req.params.id;
-  console.log(projectId);
 
-  // 2 - update project with new data
+  // 2 - Check if this id exists inside db
+  let project;
+  try {
+    project = await Project.findById(projectId);
+  } catch (err) {
+    return next(err);
+  }
+
+  if (!project) {
+    const error = new Error("This project doesn't exist");
+    return next(error);
+  }
+
+  // 3 - update project with new data if it exists
   try {
     await Project.findByIdAndUpdate(projectId, req.body);
   } catch (err) {
-    return console.log(err);
+    const error = new Error("Can't update data");
+    error.status = 500;
+    return next(error);
   }
   
-  // 3 - send response
+  // 4 - send response
   res.status(200).json({ message: "Project has been updated" });
 }
 
 const deleteProject = async (req, res, next) => {
   const projectId = req.params.id;
-  console.log(projectId);
 
   let project;
-
   try {
     project = await Project.findByIdAndDelete(projectId);
   } catch (err) {
-    return console.log(err)
+    return next(err);
   }
 
   if (!project) {
-    console.log('This place cannot be found');
-    return next();
+    const error = new Error("This place cannot be found");
+    error.status = 404;
+    return next(error);
   }
 
   TODO: // Handle uploaded file link to this project (erase uploaded picture) 

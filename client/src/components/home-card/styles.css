@@ -1,14 +1,78 @@
-
-.card__test {
+/* .project__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
   border: 1px solid black;
   flex-grow: 1;
   flex-shrink: 1;
   height: 20rem;
   width: 20rem;
-  background-color: rgb(3, 146, 10);
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.J0JE-fKbFT4bxpp8ilPpEQHaHa%26pid%3DApi&f=1');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   transition: ease-in-out .5s;
 }
 
-.card__test:hover {
+.card__link:hover {
   background-color: aqua;
+} */
+
+.card__body {
+  position: relative;
+}
+
+.card__body__image {
+  display: block;
+  width: 100%;
+}
+
+.card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card__overlay--blur {
+  backdrop-filter: blur(5px);
+}
+
+.card__overlay--primary {
+  background: #f0a202;
+}
+
+.card__overlay > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.card__overlay:hover {
+  opacity: 1;
+}
+
+.card__overlay:hover > * {
+  transform: translateY(0)
+}
+
+.card__overlay__title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: .5em;
+}
+
+.card__overlay__description {
+  font-size: 1.25em;
+  margin-top: 0.25em;
 }

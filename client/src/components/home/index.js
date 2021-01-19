@@ -13,9 +13,8 @@ const Home = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        //console.log(`Fetched projects BEFORE axios : ${JSON.stringify(loadedProjects)}`);
         const projectsRequest = await axios.get('http://localhost:5000/api/projects');
-        //console.log(projectsRequest.data.projects);
+
         setLoadedProjects(projectsRequest.data.projects);
       } catch (err) {
         console.log(err)

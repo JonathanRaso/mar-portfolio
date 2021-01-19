@@ -17,6 +17,17 @@ app.use(bodyParser.json());
 
 TODO://Add express-static middleware to serve images when uploading image will be added
 
+
+// --- CORS MIDDLEWARE --- //
+// This middleware will add header to every response, in order to take care of CORS issues
+app.use((req, res, next) => {
+  // '*' give access to any domain
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+  next();
+});
+
 app.get('/' , (req, res, next) => {
   res.send('MAR-portfolio Server Running!!! ')
 })

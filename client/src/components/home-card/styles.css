@@ -1,0 +1,17 @@
+.card__test {
+  border: 1px solid black;
+  flex-grow: 1;
+  flex-shrink: 1;
+  height: 20rem;
+  width: 20rem;
+  background-color: rgb(1, 158, 9);
+}
+
+.card__test2 {
+  border: 1px solid black;
+  flex-grow: 1;
+  flex-shrink: 1;
+  height: 20rem;
+  width: 20rem;
+  background-color: rgb(158, 1, 22);
+}

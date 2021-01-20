@@ -1,3 +1,13 @@
+:root {
+  --ff-main: 'Teko', sans-serif;
+
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+}
+
 /* reset */
 *,
 *::before,
@@ -49,6 +59,7 @@ img {
 
 body {
   line-height: 1.4;
+  font-family: var(--ff-main);
 }
 
 /* utility class */

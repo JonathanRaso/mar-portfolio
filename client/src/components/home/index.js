@@ -38,42 +38,6 @@ const Home = () => {
           )
         })
       }
-      {/* <div className="card__test">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test2">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test2">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test2">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test2">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test2">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test">
-        <h3>Testing card</h3>
-      </div>
-      <div className="card__test2">
-        <h3>Testing card</h3>
-      </div> */}
     </main>
   )
 };

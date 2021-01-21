@@ -1,6 +1,13 @@
-.homepage__body {
-}
-
 main {
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+/******
+This is used for limiting size of the last home-card element. 
+It doesn't grow to full width thanks to thix declaration.
+******/
+main::after {
+  content: '';
+  flex-grow: 10;
 }

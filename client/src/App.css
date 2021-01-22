@@ -1,11 +1,35 @@
 :root {
+  /* FONT FAMILY */
   --ff-main: 'Teko', sans-serif;
 
+  /* FONT WEIGHT */
   --fw-300: 300;
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
   --fw-700: 700;
+
+  /* FONT SIZE */
+  --fs-small: 1.25rem;
+  --fs-medium: 1.75rem;
+  --fs-large: 2.25rem;
+
+  /* COLORS */
+  --clr-first: #102542;
+  --clr-second: #DA0101;
+  --clr-third: #60E1E0;
+  --clr-fourth: #FF9F1C;
+
+  /* SHADOW */
+  --ts-basic: 3px 2px 1px rgba(0,0,0,0.2);
+  --bs-basic: 
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
 }
 
 /* reset */
@@ -60,6 +84,18 @@ img {
 body {
   line-height: 1.4;
   font-family: var(--ff-main);
+  font-size: var(--fs-small);
+}
+
+h2 {
+  font-size: var(--fs-large);
+  text-shadow: var(--ts-basic);
+}
+
+p {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-400);
+  text-shadow: var(--ts-basic);
 }
 
 /* utility class */

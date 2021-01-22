@@ -1,9 +1,9 @@
-:root {
-  --clr-firstCard: #011627;
-  --clr-secondCard: #DA0101;
-  --clr-thirdCard: #41EAD4;
-  --clr-fourthCard: #FF9F1C;
-}
+/* :root {
+  --clr-first: #102542;
+  --clr-second: #DA0101;
+  --clr-third: #60E1E0;
+  --clr-fourth: #FF9F1C;
+} */
 
 .card__container {
   margin: .3em;
@@ -43,19 +43,19 @@
 
 /* Nth-child for overlay colors (:hover background) */
 main .card__container:nth-child(4n + 1) .card__overlay {
-  background: var(--clr-firstCard);
+  background: var(--clr-first);
 }
 
 main .card__container:nth-child(4n + 2) .card__overlay {
-  background: var(--clr-secondCard);
+  background: var(--clr-second);
 }
 
 main .card__container:nth-child(4n + 3) .card__overlay {
-  background: var(--clr-thirdCard);
+  background: var(--clr-third);
 }
 
 main .card__container:nth-child(4n + 4) .card__overlay {
-  background: var(--clr-fourthCard);
+  background: var(--clr-fourth);
 }
 
 .card__overlay > * {
@@ -71,13 +71,13 @@ main .card__container:nth-child(4n + 4) .card__overlay {
   transform: translateY(0)
 }
 
-.card__overlay__title {
+.card__overlay--title {
   font-size: 2em;
   font-weight: bold;
   margin-bottom: .5em;
 }
 
-.card__overlay__description {
+.card__overlay--description {
   font-size: 1.25em;
   margin-top: 0.25em;
 }

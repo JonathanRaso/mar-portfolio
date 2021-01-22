@@ -11,11 +11,11 @@ const HomeCard = ({id, title, description, imageUrl}) => {
           <img 
             src="https://source.unsplash.com/random" 
             alt=""
-            className="card__body__image"
+            className="card__body--image"
           />
           <div className="card__overlay">
-            <h3 className="card__overlay__title">{`${title}`}</h3>
-            <p className="card__overlay__description">{`${description}`}</p>
+            <h2 className="card__overlay--title">{`${title}`}</h2>
+            <p className="card__overlay--description">{`${description}`}</p>
           </div>
         </div>
       </Link>

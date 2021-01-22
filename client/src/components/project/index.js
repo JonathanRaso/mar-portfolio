@@ -34,8 +34,8 @@ const ProjectDetails = () => {
   }, [projectId]);
 
   return (
-    <main className="main__height project__body">
-      <div className="project__picture">
+    <main className={`main__height project__body`}>
+      <div className={`project__picture project__picture--${backgroundColor}`}>
         {specificProject &&
         <>
           <img src="https://source.unsplash.com/random" alt=""/>
@@ -45,8 +45,8 @@ const ProjectDetails = () => {
       <div className={`project__info project__info--${backgroundColor}`}>
         {specificProject &&
         <>
-          <h2>{specificProject.title}</h2>
-          <p>{specificProject.description}</p>
+          <h2 className="project__info--title">{specificProject.title}</h2>
+          <p className="project__info--description">{specificProject.description} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed quisquam, tenetur, ab temporibus deserunt aspernatur optio consequuntur dolor quos, possimus modi. Minima quasi iste nobis unde adipisci totam ullam quaerat! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, eaque ipsa? Nam, atque? Saepe facilis sequi architecto? Assumenda quae ullam consectetur dolore aut nihil aperiam minima omnis, commodi, aliquam perferendis!</p>
         </> 
         }
       </div>

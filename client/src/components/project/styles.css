@@ -1,10 +1,16 @@
+
 .project__body::after {
   content: none;
 }
 
+/***************
+PROJECT__PICTURE DIV
+***************/
+
 .project__picture {
   margin: .5rem 1rem;
-  height: 70%;
+  height: 75%;
+  background-image: none;
 }
 
 .project__picture img {
@@ -13,50 +19,91 @@
   border-radius: 5px;
 }
 
+.project__picture--first {
+  background-image: linear-gradient(var(--clr-first) 50%, transparent 50%);
+}
+.project__picture--second {
+  background-image: linear-gradient(var(--clr-second) 50%, transparent 50%);
+}
+
+.project__picture--third {
+  background-image: linear-gradient(var(--clr-third) 50%, transparent 50%);
+}
+.project__picture--fourth {
+  background-image: linear-gradient(var(--clr-fourth) 50%, transparent 50%);
+}
+
+/***************
+PROJECT__INFO DIV
+***************/
+
 .project__info {
-  border-radius: 5px;
+  border-radius: 10px;
   margin: 1rem;
   padding: 2.5rem;
   color: #fff;
   text-align: center;
 }
 
+.project__info--title {
+  margin-bottom: 1rem;
+}
+
+.project__info--title {
+  margin-bottom: 1rem;
+}
+
 .project__info--first {
-  background-color: #011627;
+  background-color: var(--clr-first);
 }
 .project__info--second {
-  background-color: #DA0101;
+  background-color: var(--clr-second);
 }
 .project__info--third {
-  background-color: #41EAD4;
+  background-color: var(--clr-third);
 }
 .project__info--fourth {
-  background-color: #FF9F1C;
+  background-color: var(--clr-fourth);
 }
 
-/* 2274A5 011627 ////3C1518  593C8F  41EAD4 */
-
 /* ---- Desktop Media Queries ---- */
-
 @media (min-width: 803px) {
   .project__body {
     display: flex;
     width: 80%;
     margin: auto;
-    align-items: center;
+    /* border-radius: 5px; */
+    /* background-color: #edf2f4; */
+    /* height: 60vh; */
   }
 
   .project__info {
     width: 30%;
+    align-self: center;
+    box-shadow: var(--bs-basic);
   }
 
   .project__picture {
+    display: flex;
+    border: 1px solid #dadada;
+    border-radius: 16px;
+    padding: 35px;
     width: 50%;
+    justify-content: center;
+    align-self: center;
+    box-shadow: var(--bs-basic);
   }
 
   .project__picture img {
-    width: 70%;
-    height: 70%;
-    border-radius: 5px;
+    width: 80%;
+    height: 80%;
+    border: 5px solid #fff;
+    align-self: center;
+    transition: transform .5s;
+    box-shadow: var(--bs-basic);
+  }
+
+  .project__picture img:hover {
+    transform: scale(1.3);
   }
 }

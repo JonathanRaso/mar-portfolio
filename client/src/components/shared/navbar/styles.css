@@ -1,112 +1,149 @@
 .container {
-  position: sticky;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background-color: #fff;
-  z-index: 10;
-  border-bottom-left-radius: 20%;
-  border-bottom-right-radius: 20%;
-
+  margin-left: auto;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
 }
 
-/* .container::after {
-  position: absolute;
-  content: '';
- height: 3px;
- width: 20%;
- left: calc(50% - 10%);
- top: 98%;
-  background-color: #000;
-} */
-
-.navbar__ul {
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 0;
-}
-
-.navbar__ul a {
-  /* text-decoration: none;
-  color: #000;
-  display: inline-block; */
-  /* margin-top: 2rem; */
-  /* padding: 10px; */
-}
-
-/* .navbar__ul a:hover{
-  background-color: #ccc;
-} */
-
-.navbar__ul--link {
-  position: relative;
-  text-decoration: none;
-  color: #000;
-  display: inline-block;
-  font-size: var(--fs-medium);
-  transition: 300ms ease-in;
-}
-
-.navbar__ul--link:hover {
-  color: var(--clr-second);
-}
-
-.navbar__ul--link::before {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
+.open {
   width: 100%;
-  height: 3px;
-  background-color: var(--clr-second);
-  transform: scaleX(0.2);
-  transform-origin: right;
-  transition: 300ms ease-in;
 }
 
-.active {
-  color: var(--clr-second);
-}
-
-.navbar__ul--link:hover::before {
-  background-color: #000;
-  transform: scaleX(1);
-  transform-origin: right;
-}
-
-.navbar__ul--link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--clr-second);
-  transform: scaleX(0.2);
-  transform-origin: left;
-  transition: 300ms ease-in;
-}
-
-.navbar__ul--link:hover::after {
-  background-color: #000;
-  transform: scaleX(1);
-  transform-origin: left;
+.navbar__body {
+  display: flex;
+  align-items: center;
 }
 
 .navbar__ul--image {
-  margin: auto;
-  align-items: center;
   width: 50%;
-  transition: .5s ease-in-out;
+  margin: auto;
 }
 
-.navbar__ul--image:hover {
-  background-color: #313131;
-  border-radius: 20%;
+.navbar__hamburger {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 50%;
 }
 
-@media screen and (min-width: 42em) {
+.navbar__ul--link {
+  display: none;
+}
+
+@media screen and (min-width: 43em) {
+  .container {
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar__hamburger {
+    display: none;
+  }
+  
+  /* .container::after {
+    position: absolute;
+    content: '';
+   height: 3px;
+   width: 20%;
+   left: calc(50% - 10%);
+   top: 98%;
+    background-color: #000;
+  } */
+  
+  .navbar__ul {
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0;
+  }
+  
+  .navbar__ul a {
+    /* text-decoration: none;
+    color: #000;
+    display: inline-block; */
+    /* margin-top: 2rem; */
+    /* padding: 10px; */
+  }
+  
+  /* .navbar__ul a:hover{
+    background-color: #ccc;
+  } */
+  
+  .navbar__ul--link {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+    font-size: var(--fs-medium);
+    transition: 300ms ease-in;
+  }
+  
+  .navbar__ul--link:hover {
+    color: var(--clr-second);
+  }
+  
+  .navbar__ul--link::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--clr-second);
+    transform: scaleX(0.2);
+    transform-origin: right;
+    transition: 300ms ease-in;
+  }
+  
+  .active {
+    color: var(--clr-second);
+  }
+  
+  .navbar__ul--link:hover::before {
+    background-color: #000;
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  
+  .navbar__ul--link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--clr-second);
+    transform: scaleX(0.2);
+    transform-origin: left;
+    transition: 300ms ease-in;
+  }
+  
+  .navbar__ul--link:hover::after {
+    background-color: #000;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .navbar__ul--image {
+    margin: auto;
+    align-items: center;
+    width: 50%;
+    transition: .5s ease-in-out;
+  }
+  
+  .navbar__ul--image:hover {
+    background-color: #313131;
+    border-radius: 20%;
+  }
+
 }

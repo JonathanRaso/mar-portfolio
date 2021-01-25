@@ -46,7 +46,7 @@ const ProjectDetails = () => {
         {specificProject &&
         <>
           <h2 className="project__info--title">{specificProject.title}</h2>
-          <p className="project__info--description">{specificProject.description} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed quisquam, tenetur, ab temporibus deserunt aspernatur optio consequuntur dolor quos, possimus modi. Minima quasi iste nobis unde adipisci totam ullam quaerat! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, eaque ipsa? Nam, atque? Saepe facilis sequi architecto? Assumenda quae ullam consectetur dolore aut nihil aperiam minima omnis, commodi, aliquam perferendis!</p>
+          <p className="project__info--description">{specificProject.description}. Minima quasi iste nobis unde adipisci totam ullam quaerat! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, eaque ipsa? Nam, atque? Saepe facilis sequi architecto? Assumenda quae ullam consectetur dolore aut nihil aperiam minima omnis, commodi, aliquam perferendis!</p>
         </> 
         }
       </div>

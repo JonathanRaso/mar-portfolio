@@ -9,10 +9,13 @@ const Navbar = () => {
       <nav className="navbar__body">
         <ul className="navbar__ul flex">
           <li>
-            <Link to="/">Réalisations</Link>
+            <Link to="/" className="navbar__ul--link">Réalisations</Link>
           </li>
           <li>
-            <Link to="/infos">Infos</Link>
+            <Link to ="/"><img className="navbar__ul--image" src="/MAR-portfolio-logo.png" alt="logo"/></Link>
+          </li>
+          <li>
+            <Link to="/infos" className="navbar__ul--link">Infos</Link>
           </li>
         </ul>
       </nav>

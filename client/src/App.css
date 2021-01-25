@@ -78,7 +78,7 @@ select {
 img {
   max-width: 100%;
   height: auto;
-  display: block;;
+  display: block;
 }
 
 body {
@@ -90,6 +90,8 @@ body {
 h2 {
   font-size: var(--fs-large);
   text-shadow: var(--ts-basic);
+  text-transform: uppercase ;
+  /* text-decoration: underline; */
 }
 
 p {
@@ -104,7 +106,7 @@ p {
 }
 
 .nav__height {
-  height: 12vh;
+  /* height: 25%; */
 }
 
 .main__height {

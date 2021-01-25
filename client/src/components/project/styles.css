@@ -16,7 +16,6 @@ PROJECT__PICTURE DIV
 .project__picture img {
   width: 100%;
   height: 100%;
-  border-radius: 5px;
 }
 
 .project__picture--first {
@@ -43,6 +42,8 @@ PROJECT__INFO DIV
   padding: 2.5rem;
   color: #fff;
   text-align: center;
+  max-height: 60%;
+  overflow: scroll;
 }
 
 .project__info--title {
@@ -66,29 +67,26 @@ PROJECT__INFO DIV
   background-color: var(--clr-fourth);
 }
 
-/* ---- Desktop Media Queries ---- */
-@media (min-width: 803px) {
+
+/****************** 
+  TABLET MEDIA QUERIES
+******************/
+@media (min-width: 43em) {
   .project__body {
     display: flex;
     width: 80%;
-    margin: auto;
-    /* border-radius: 5px; */
-    /* background-color: #edf2f4; */
-    /* height: 60vh; */
+    margin: 1em auto;
   }
 
-  .project__info {
-    width: 30%;
-    align-self: center;
-    box-shadow: var(--bs-basic);
-  }
-
+  /***************
+  PROJECT__PICTURE DIV
+  ***************/
   .project__picture {
     display: flex;
     border: 1px solid #dadada;
     border-radius: 16px;
     padding: 35px;
-    width: 50%;
+    width: 80%;
     justify-content: center;
     align-self: center;
     box-shadow: var(--bs-basic);
@@ -103,7 +101,84 @@ PROJECT__INFO DIV
     box-shadow: var(--bs-basic);
   }
 
+  /***************
+  PROJECT__INFO DIV
+  ***************/
+  .project__info {
+    border-radius: 10px;
+    margin: 1rem auto;
+    padding: 2.5rem;
+    box-shadow: var(--bs-basic);
+    text-align: center;
+  }
+
+  .project__info--first,
+  .project__info--first,
+  .project__info--first,
+  .project__info--first {
+    background-image: none;
+  }
+}
+
+/****************** 
+  DESKTOP MEDIA QUERIES
+******************/
+@media (min-width: 62em) {
+  .project__body {
+    /* display: flex; */
+    /* width: 80%; */
+    margin: auto;
+  }
+
+  /***************
+  PROJECT__PICTURE DIV
+  ***************/
+  .project__info {
+    border-radius: 10px;
+    margin: 1rem auto;
+    padding: 2.5rem;
+    box-shadow: var(--bs-basic);
+    text-align: center;
+  }
+  .project__picture {
+    /* display: flex;
+    border: 1px solid #dadada;
+    border-radius: 16px;
+    padding: 35px; */
+    width: 50%;
+    /* justify-content: center;
+    align-self: center;
+    box-shadow: var(--bs-basic); */
+  }
+
+  /* .project__picture img {
+    width: 80%;
+    height: 80%;
+    border: 5px solid #fff;
+    align-self: center;
+    transition: transform .5s;
+    box-shadow: var(--bs-basic);
+  } */
+
   .project__picture img:hover {
     transform: scale(1.3);
+  }
+
+  /***************
+  PROJECT__INFO DIV
+  ***************/
+  .project__info {
+    border-radius: 10px;
+    margin: 1rem auto;
+    padding: 2.5rem;
+    box-shadow: var(--bs-basic);
+    text-align: center;
+  }
+  .project__info {
+    width: 30%;
+    align-self: center;
+    /* box-shadow: var(--bs-basic); */
+    max-height: 75%;
+    overflow: hidden;
   }
 }

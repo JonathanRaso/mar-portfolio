@@ -5,8 +5,8 @@
   width: 100%;
   background-color: #fff;
   z-index: 10;
-  /* border-bottom-left-radius: 25%;
-  border-bottom-right-radius: 25%; */
+  border-bottom-left-radius: 20%;
+  border-bottom-right-radius: 20%;
 
   display: flex;
   justify-content: center;
@@ -67,6 +67,10 @@
   transition: 300ms ease-in;
 }
 
+.active {
+  color: var(--clr-second);
+}
+
 .navbar__ul--link:hover::before {
   background-color: #000;
   transform: scaleX(1);
@@ -105,8 +109,4 @@
 }
 
 @media screen and (min-width: 42em) {
-  .container {
-    border-bottom-left-radius: 20%;
-    border-bottom-right-radius: 20%;
-  }
 }

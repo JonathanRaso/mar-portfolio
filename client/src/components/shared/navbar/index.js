@@ -1,21 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import '../../../App.css';
 import './styles.css';
 
 const Navbar = () => {
   return (
-    <div className="nav__height container">
+    <div className="container">
       <nav className="navbar__body">
         <ul className="navbar__ul flex">
           <li>
-            <Link to="/" className="navbar__ul--link">Réalisations</Link>
+            <NavLink to="/" exact className="navbar__ul--link">Réalisations</NavLink>
           </li>
           <li>
             <Link to ="/"><img className="navbar__ul--image" src="/MAR-portfolio-logo.png" alt="logo"/></Link>
           </li>
           <li>
-            <Link to="/infos" className="navbar__ul--link">Infos</Link>
+            <NavLink to="/infos" className="navbar__ul--link">Infos</NavLink>
           </li>
         </ul>
       </nav>

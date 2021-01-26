@@ -6,7 +6,7 @@
 }
 
 .open {
-  width: 100%;
+  border: 1px solid black;
 }
 
 .navbar__body {
@@ -19,12 +19,75 @@
   margin: auto;
 }
 
-.navbar__hamburger {
+/* .navbar__hamburger {
   padding: 0;
   background: none;
   border: none;
   cursor: pointer;
   height: 50%;
+} */
+
+/* BURGER MENU-BUTTON */
+.navbar__button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3em;
+  height: 3em;
+  cursor: pointer;
+  transition: all .5 ease-in-out;
+  /* border: 3px solid #000; */
+}
+
+.navbar__button--burger {
+  width: 1.5em;
+  height: 3px;
+  background: #000;
+  border-radius: 20%;
+  box-shadow: 0 2px 5px rgba(255,101,47,.2);
+  transition: all .5s ease-in-out;
+}
+
+.navbar__button--burger::before,
+.navbar__button--burger::after {
+  content: '';
+  position: absolute;
+  width: 1.5em;
+  height: 3px;
+  background: #000;
+  border-radius: 20%;
+  box-shadow: 0 2px 5px rgba(255,101,47,.2);
+  transition: all .5s ease-in-out;
+}
+
+.navbar__button--burger::before {
+  transform: translateY(-.5em);
+}
+
+.navbar__button--burger::after {
+  transform: translateY(.5em);
+}
+
+/* BURGER MENU-BUTTON ANIMATION */
+
+.navbar__button.open .navbar__button--burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+
+.navbar__button.open .navbar__button--burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.navbar__button.open .navbar__button--burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+
+.navbar__image {
+  width: 75%;
 }
 
 .navbar__ul--link {
@@ -47,7 +110,7 @@
     align-items: center;
   }
 
-  .navbar__hamburger {
+  .navbar__button {
     display: none;
   }
   

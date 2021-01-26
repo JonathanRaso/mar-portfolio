@@ -19,6 +19,8 @@
   --clr-second: #DA0101;
   --clr-third: #60E1E0;
   --clr-fourth: #FF9F1C;
+  --clr-white: #ffffff;
+  --clr-black: #000000;
 
   /* SHADOW */
   --ts-basic: 3px 2px 1px rgba(0,0,0,0.2);
@@ -85,6 +87,7 @@ body {
   line-height: 1.4;
   font-family: var(--ff-main);
   font-size: var(--fs-small);
+  height: 100%;
 }
 
 h2 {

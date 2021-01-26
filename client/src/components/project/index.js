@@ -34,7 +34,7 @@ const ProjectDetails = () => {
   }, [projectId]);
 
   return (
-    <main className={`main__height project__body`}>
+    <main className="project__body">
       <div className={`project__picture project__picture--${backgroundColor}`}>
         {specificProject &&
         <>

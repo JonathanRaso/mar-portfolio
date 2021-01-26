@@ -72,10 +72,16 @@ PROJECT__INFO DIV
   TABLET MEDIA QUERIES
 ******************/
 @media (min-width: 43em) {
+  /* main {
+    margin-top: 15em;
+  } */
+
   .project__body {
     display: flex;
     width: 80%;
-    margin: 1em auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7em;
   }
 
   /***************
@@ -93,8 +99,8 @@ PROJECT__INFO DIV
   }
 
   .project__picture img {
-    width: 80%;
-    height: 80%;
+    max-width: 80%;
+    max-height: 80%;
     border: 5px solid #fff;
     align-self: center;
     transition: transform .5s;
@@ -125,9 +131,11 @@ PROJECT__INFO DIV
 ******************/
 @media (min-width: 62em) {
   .project__body {
-    /* display: flex; */
     /* width: 80%; */
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7em;
+    align-items: center;
   }
 
   /***************
@@ -145,7 +153,10 @@ PROJECT__INFO DIV
     border: 1px solid #dadada;
     border-radius: 16px;
     padding: 35px; */
-    width: 50%;
+    width: 700px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
     /* justify-content: center;
     align-self: center;
     box-shadow: var(--bs-basic); */

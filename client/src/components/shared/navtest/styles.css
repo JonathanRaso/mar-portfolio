@@ -5,6 +5,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
 }
 
 .logo {
@@ -105,8 +106,6 @@ nav a {
   header {
     display: grid;
     grid-template-columns: 1fr auto minmax(700px, 3fr) 1fr;
-    border-bottom-left-radius: 20%;
-    border-bottom-right-radius: 20%;
   }
 
   .logo {

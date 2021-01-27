@@ -3,6 +3,7 @@ const { check } = require('express-validator')
 // TODO Create fileUpload middleware and import it here
 
 const projectsController = require('../controllers/projectsController');
+
 const router = express.Router();
 
 router.get('/', projectsController.getProjects);
@@ -28,6 +29,6 @@ router.post(
     check('description')
       .isLength({ min: 15 }), 
   ],
-  projectsController.createProject);
+  projectsController.createProject); 
 
 module.exports = router;

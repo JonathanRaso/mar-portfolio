@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const port = process.env.PORT || 5000;
 
 const projectsRoutes = require('./routes/projects-routes');
+const usersRoutes = require('./routes/users-routes');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.get('/' , (req, res, next) => {
 
 // --- ROUTES MIDDLEWARE --- // 
 app.use('/api/projects', projectsRoutes);
+app.use('/api/users', usersRoutes);
 
 // --- 404 MIDDLEWARE --- // 
 app.use((req, res, next) => {

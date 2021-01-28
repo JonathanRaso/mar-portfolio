@@ -10,7 +10,7 @@ const userLogin = async (req, res, next) => {
   try {
     user = await User.exists({ username, password });
   } catch (err) {
-    return next(new Error("Cannot find this user"));
+    return next(new Error("Login failed, try again"));
   }
 
   if (!user) {

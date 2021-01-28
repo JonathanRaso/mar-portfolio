@@ -3,14 +3,16 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+/* const session = require('express-session'); */
+/* const session = require('cookie-parser'); */
 
 const port = process.env.PORT || 5000;
 
 const projectsRoutes = require('./routes/projects-routes');
 const usersRoutes = require('./routes/users-routes');
+const { cookie } = require('express-validator');
 
 const app = express();
-
 
 // --- BODY PARSING MIDDLEWARE --- //
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
@@ -32,6 +34,16 @@ app.use((req, res, next) => {
 app.get('/' , (req, res, next) => {
   res.send('MAR-portfolio Server Running!!! ')
 })
+
+/* app.use(session({
+  secret:'secretKey',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    maxAge: 3600000,
+  }
+})); */
 
 // --- ROUTES MIDDLEWARE --- // 
 app.use('/api/projects', projectsRoutes);

@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
+
+import { AuthContext } from '../../context/auth-context';
 
 import '../../../App.css';
 import './styles.css';
 
 const AdminDashboard = () => {
 
-  /* const [formValue, setFormValue] = useState({}); */
+  const { login, setLogin } = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,26 +17,21 @@ const AdminDashboard = () => {
     event.preventDefault();
     const form = {username, password};
     console.log(form);
+    console.log(login);
     console.log("Form submitted");
-
-    /* axios.post("http://localhost:5000/api/users/login")
-      .then(console.log(Response)) */
       
-      axios.post("http://localhost:5000/api/users/login", { username, password })
-      .then(function (response) {
-        console.log(username, password);
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });  
-    /* setFormValue({[event.target.name]: [event.target.value]}); */
-    /* console.log(formValue); */
-    /* console.log(event.target, event.target.value);
-    console.log(formValue);
-    setFormValue({})
-    console.log(username, password); */
-    /* setPassword() */
+    axios.post("http://localhost:5000/api/users/login", { username, password })
+    .then(function (response) {
+      /* console.log(username, password);
+      console.log(response);
+      console.log(response.headers);
+      console.log(response.data);
+      console.log(response.status); */
+      setLogin(true);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });  
   }
 
   return (
@@ -49,6 +47,9 @@ const AdminDashboard = () => {
 
           <input type="submit" value="Connexion"/>
         </form>
+        <p>{login}</p>
+        {login && <p>Tu es connecté</p>}
+        <button onClick={() => {setLogin('log'); console.log(login)}}>Change Value</button>
       </div>
     </main>
   )

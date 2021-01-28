@@ -1,3 +1,5 @@
+
+import { useState, useMemo } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 /* import Navbar from './components/shared/navbar/index.js' */
@@ -8,12 +10,19 @@ import ProjectDetails from './components/project/index.js';
 
 import AdminDashboard from './components/admin/admin-dashboard/index.js';
 
+import { AuthContext } from './components/context/auth-context';
+
 /* import AdminDashboard from './components/dashboard/index'; */
 
 import './App.css';
 
 function App() {
+  const [login, setLogin] = useState(false);
+
+  const value = useMemo(() => ({ login, setLogin }), [login, setLogin]);
+
   return (
+    <AuthContext.Provider value={value}>
       <div className="App">
         <Navbar />
         <Switch>
@@ -34,6 +43,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+    </AuthContext.Provider>  
   );
 }
 

@@ -1,9 +1,18 @@
+import { useContext } from 'react';
+
+import { AuthContext } from '../context/auth-context';
+
 import '../../App.css'
 import './styles.css'
 
 const Infos = () => {
+
+  const { login } = useContext(AuthContext);
+
   return (
     <main className="main__height">
+      <p>{login}</p>
+      {login && <p>Tu es connecté</p>}
       <div className="infos__container">
         <h2 className="infos__title">Bienvenue</h2>
         <img className="infos__avatar" src="/MAR-portfolio-portrait.jpg" alt="portrait de l'artiste"/>

@@ -19,6 +19,9 @@ const ProjectDetails = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  /* const [editForm, setEditForm] = useState(""); */
+
+
   const handleDeleteButton = async () => {
     /* console.log("suppression du projet numéro" + projectId); */
     try {
@@ -30,20 +33,49 @@ const ProjectDetails = () => {
     return history.push("/");
   }
 
-  const handleSubmitEditForm = (event) => {
+  const handleSubmitEditForm = async (event) => {
+    // 1 - Disable normal behaviour of form when submit
     event.preventDefault();
-    console.log(title, description);
+    /* console.log(title.length, description.length);
+    console.log(specificProject.title, specificProject.description);
     console.log("Edit form submitted");
-      
-    axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title, description })
-    .then(function (response) {
+    console.log("titre : " + title, "description : " + description); */
+    
+    // 2 - Get data from form
+    let editedTitle = title;
+    let editedDescription = description;
+    
+    /* console.log(editedTitle, editedDescription); */
+
+    // 2 - Check if one of the input is missing. If so, add previous data in order to send something complete to the server.
+    // If not, express-validator will send 500 response because he needs a title and a description with at least 3 and 15 characters.
+    if (editedTitle.length === 0) {
+      editedTitle = specificProject.title;
+      console.log("titre non renseigné");
+    };
+
+    if (editedDescription.length === 0) {
+      editedDescription = specificProject.description;
+      console.log("description non renseignée");
+    };
+
+    /* console.log("titre après if : " + editedTitle, "description après if: " + editedDescription); */
+
+
+    // 3 - Async patch request to update infos inside DB and redirect admin to homepage if request successful.
+    try {
+      console.log(editedTitle, editedDescription);
+      const response = await axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title : editedTitle, description: editedDescription });
+      /* const response = await axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title, description }); */
       console.log(title, description);
+      console.log("titre : " + editedTitle, "description : " + editedDescription)
       console.log(response);
       console.log(response.data);
-    })
-    .catch(function (error) {
+      console.log(specificProject.title, specificProject.description)
+    } catch (error) {
       console.log(error);
-    });  
+    }
+    return history.push("/");
   }
 
   useEffect(() => {

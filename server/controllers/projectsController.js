@@ -64,6 +64,7 @@ const updateProject = async (req, res, next) => {
 
   // 1 - get id of the project with req.params
   const projectId = req.params.id;
+  console.log(req.body);
 
   // 2 - Check if this id exists inside db
   let project;
@@ -81,6 +82,7 @@ const updateProject = async (req, res, next) => {
   // 3 - update project with new data if it exists
   try {
     await Project.findByIdAndUpdate(projectId, req.body);
+    /* console.log(req.body); */
   } catch (err) {
     const error = new Error("Can't update data");
     error.status = 500;

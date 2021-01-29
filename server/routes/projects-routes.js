@@ -15,7 +15,7 @@ router.patch(
     check('title')
       .isLength({ min: 3 }),
     check('description')
-      .isLength({ min: 15 }),  
+      .isLength({ min: 15 }), 
   ],
   projectsController.updateProject);
 router.delete('/:id', projectsController.deleteProject);

@@ -35,13 +35,15 @@ const ProjectDetails = () => {
     console.log(title, description);
     console.log("Edit form submitted");
       
-  /*   axios.post("http://localhost:5000/api/users/login", { username, password })
+    axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title, description })
     .then(function (response) {
-      setLogin(true);
+      console.log(title, description);
+      console.log(response);
+      console.log(response.data);
     })
     .catch(function (error) {
       console.log(error);
-    });   */
+    });  
   }
 
   useEffect(() => {
@@ -78,6 +80,7 @@ const ProjectDetails = () => {
               type="text" 
               name="title" 
               value={title}
+              placeholder="3 caractères min"
               onChange={(event) => {
                 setTitle(event.target.value);
                 console.log('edited title is : ' + title)
@@ -89,7 +92,8 @@ const ProjectDetails = () => {
               id="description" 
               type="text" 
               name="description" 
-              value={description} 
+              value={description}
+              placeholder="15 caractères min" 
               onChange={(event) => {
                 setDescription(event.target.value);
                 console.log('edited description is : ' + description)

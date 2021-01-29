@@ -16,6 +16,9 @@ const ProjectDetails = () => {
   const [specificProject, setSpecificProject] = useState();
   const [backgroundColor, setBackgroundColor] = useState();
 
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
   const handleDeleteButton = async () => {
     /* console.log("suppression du projet numéro" + projectId); */
     try {
@@ -25,6 +28,20 @@ const ProjectDetails = () => {
       console.log(error);
     }
     return history.push("/");
+  }
+
+  const handleSubmitEditForm = (event) => {
+    event.preventDefault();
+    console.log(title, description);
+    console.log("Edit form submitted");
+      
+  /*   axios.post("http://localhost:5000/api/users/login", { username, password })
+    .then(function (response) {
+      setLogin(true);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });   */
   }
 
   useEffect(() => {
@@ -52,9 +69,36 @@ const ProjectDetails = () => {
   return (
     <main className="project__body">
       {login && 
-        <div>
-          <button onClick={handleDeleteButton}>Supprimer ce projet</button>
-          <button onClick={() => console.log('Projet modifié')}>Valider changement</button>
+        <div className="dashboard">
+          <form onSubmit={handleSubmitEditForm} method="POST">
+
+            <label htmlFor="title">Titre</label>
+            <input 
+              id="title" 
+              type="text" 
+              name="title" 
+              value={title}
+              onChange={(event) => {
+                setTitle(event.target.value);
+                console.log('edited title is : ' + title)
+              }}
+            />
+
+            <label htmlFor="description">Description</label>
+            <textarea 
+              id="description" 
+              type="text" 
+              name="description" 
+              value={description} 
+              onChange={(event) => {
+                setDescription(event.target.value);
+                console.log('edited description is : ' + description)
+              }} 
+            />
+
+            <input className="dashboard__button" type="submit" value="Modifier ce projet"/>
+          </form>
+          <input className="dashboard__button" type="button" onClick={handleDeleteButton} value="Supprimer ce projet" />
         </div>
       }
 

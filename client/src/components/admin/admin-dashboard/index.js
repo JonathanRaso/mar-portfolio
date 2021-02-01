@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { AuthContext } from '../../context/auth-context';
@@ -10,6 +11,8 @@ const AdminDashboard = () => {
 
   const { login, setLogin } = useContext(AuthContext);
 
+  const history = useHistory();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,18 +22,10 @@ const AdminDashboard = () => {
   
   const handleSubmitLoginForm = (event) => {
     event.preventDefault();
-    /* const loginForm = {username, password}; */
-    /* console.log(username, password); */
-    /* console.log(loginForm);
-    console.log("loginForm submitted"); */
       
+    /* TODO ==> Replace .then.catch with async try and catch */
     axios.post("http://localhost:5000/api/users/login", { username, password })
     .then(function (response) {
-      /* console.log(username, password);
-      console.log(response);
-      console.log(response.headers);
-      console.log(response.data);
-      console.log(response.status); */
       setLogin(true);
     })
     .catch(function (error) {
@@ -44,21 +39,21 @@ const AdminDashboard = () => {
 
   const handleSubmitCreateForm = async (event) => {
     event.preventDefault();
-    /* const createForm = { title, description, imageUrl }; */
-    /* console.log(title, description, imageFile); */
 
     try {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('description', description);
       formData.append('imageUrl', imageFile);
-      console.log(formData);
-      console.log(title, description, imageFile);
       const response = await axios.post("http://localhost:5000/api/projects/add-project", formData );
+      /* TODO ==> Remove console.log(response) */
       console.log(response);
     } catch (error) {
       console.log(error);
     }
+    /* TODO ==> Redirect only if creation is successful (201). */
+    history.push('/');
+
   }
 
   return (

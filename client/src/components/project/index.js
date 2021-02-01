@@ -9,7 +9,7 @@ import './styles.css';
 
 const ProjectDetails = () => {
   let { projectId } = useParams();
-  let history = useHistory();
+  const history = useHistory();
 
   const { login } = useContext(AuthContext);
 

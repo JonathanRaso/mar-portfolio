@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const { validationResult } = require('express-validator');
 
 const Project = require('../models/project');
@@ -101,6 +103,7 @@ const deleteProject = async (req, res, next) => {
   let project;
   try {
     project = await Project.findByIdAndDelete(projectId);
+    console.log(project);
   } catch (err) {
     return next(err);
   }
@@ -111,7 +114,11 @@ const deleteProject = async (req, res, next) => {
     return next(error);
   }
 
-  TODO: // Handle uploaded file link to this project (erase uploaded picture) 
+  TODO: // Test if the picture is only removed when deleteProject is successful
+  fs.unlink(project.imageUrl, (err) => {
+    if (err) throw err;
+    console.log('The file was deleted!')
+  })
 
   res.status(200).json({ message: 'Project correctly deleted.' });
 }

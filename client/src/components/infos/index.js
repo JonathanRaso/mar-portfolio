@@ -28,8 +28,19 @@ const Infos = () => {
           <p className="infos__social--icons">
             Vous pouvez également me retrouver sur les réseaux sociaux pour voir mon travail ou échanger.
           </p>
-            <a href="https://fr-fr.facebook.com/"><img src="/MAR-portfolio-facebook.png" alt="facebook logo"/></a>
-            <a href="https://www.pinterest.fr/"><img src="/MAR-portfolio-pinterest.png" alt="pinterest logo"/></a>
+            <a 
+              href="https://fr-fr.facebook.com/people/Michel-Raso/100015040781508" 
+              target="_blank" 
+              rel="noreferrer"
+            >
+              <img src="/MAR-portfolio-facebook.png" alt="facebook logo"/>
+            </a>
+            <a 
+              href="https://www.pinterest.fr/raso_m/" 
+              target="_blank" rel="noreferrer"
+            >
+              <img src="/MAR-portfolio-pinterest.png" alt="pinterest logo"/>
+            </a>
         </div>
       </div>
     </main>

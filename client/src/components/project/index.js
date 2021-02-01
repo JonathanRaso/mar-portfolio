@@ -141,7 +141,7 @@ const ProjectDetails = () => {
       <div className={`project__picture project__picture--${backgroundColor}`}>
         {specificProject &&
         <>
-          <img src="https://source.unsplash.com/random" alt=""/>
+          <img src={`http://localhost:5000/${specificProject.imageUrl}`} alt={specificProject.title}/>
         </> 
         }
       </div>

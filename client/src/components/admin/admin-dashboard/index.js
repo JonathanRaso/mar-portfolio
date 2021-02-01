@@ -15,14 +15,14 @@ const AdminDashboard = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageFile, setImageFile] = useState();
   
   const handleSubmitLoginForm = (event) => {
     event.preventDefault();
-    const loginForm = {username, password};
+    /* const loginForm = {username, password}; */
     /* console.log(username, password); */
-    console.log(loginForm);
-    console.log("loginForm submitted");
+    /* console.log(loginForm);
+    console.log("loginForm submitted"); */
       
     axios.post("http://localhost:5000/api/users/login", { username, password })
     .then(function (response) {
@@ -38,18 +38,23 @@ const AdminDashboard = () => {
     });  
   }
 
+  const handleFileChange = (event) => {
+    setImageFile(event.target.files[0]);
+  }
+
   const handleSubmitCreateForm = async (event) => {
     event.preventDefault();
     /* const createForm = { title, description, imageUrl }; */
-    console.log(title, description, imageUrl);
+    /* console.log(title, description, imageFile); */
 
     try {
-      /* const formData = new FormData();
+      const formData = new FormData();
       formData.append('title', title);
       formData.append('description', description);
-      formData.append('imageUrl', imageUrl);
-      console.log(formData); */
-      const response = await axios.post("http://localhost:5000/api/projects/add-project", { title, description, imageUrl } );
+      formData.append('imageUrl', imageFile);
+      console.log(formData);
+      console.log(title, description, imageFile);
+      const response = await axios.post("http://localhost:5000/api/projects/add-project", formData );
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -60,7 +65,7 @@ const AdminDashboard = () => {
     <main> 
       {!login &&
         <div className="admin__container">
-          <form onSubmit={handleSubmitLoginForm} action="" method="POST">
+          <form onSubmit={handleSubmitLoginForm} method="POST">
 
             <label htmlFor="username">Nom d'utilisateur</label>
             <input 
@@ -70,7 +75,6 @@ const AdminDashboard = () => {
               value={username} 
               onChange={(event) => {
                 setUsername(event.target.value);
-                console.log('username is : ' + username);
               }} 
               required/>
 
@@ -81,7 +85,7 @@ const AdminDashboard = () => {
               name="password" 
               value={password} 
               onChange={(event) => {
-                setPassword(event.target.value); console.log('password is : ' + password)
+                setPassword(event.target.value);
               }} 
               required/>
 
@@ -92,7 +96,7 @@ const AdminDashboard = () => {
       
       {login && 
         <div className="admin__container">        
-          <form onSubmit={handleSubmitCreateForm} action="" method="POST">
+          <form onSubmit={handleSubmitCreateForm} method="POST" encType="multipart/form-data">
             <label htmlFor="title">Titre du projet</label>
             <input 
               id="title" 
@@ -100,7 +104,7 @@ const AdminDashboard = () => {
               name="title" 
               value={title} 
               onChange={(event) => {
-                setTitle(event.target.value); console.log('title is : ' + title)
+                setTitle(event.target.value); console.log('title is : ' + title);
               }}
               required
             />
@@ -111,7 +115,7 @@ const AdminDashboard = () => {
               name="description" 
               value={description} 
               onChange={(event) => {
-                setDescription(event.target.value); console.log('description is : ' + description)
+                setDescription(event.target.value); console.log('description is : ' + description);
               }} 
               required
             />
@@ -119,12 +123,13 @@ const AdminDashboard = () => {
             <label htmlFor="imageUrl">Description du projet</label>
             <input 
               id="imageUrl" 
-              type="text" 
+              type="file" 
               name="imageUrl" 
-              value={imageUrl} 
-              onChange={(event) => {
-                setImageUrl(event.target.value); console.log('imageUrl is : ' + imageUrl)
-              }} 
+              /* value={imageFile}  */
+              onChange={/* (event) => {
+                setImageFile(event.target.value);
+                console.log(event.target.value, event.target.files);
+              }*/ handleFileChange} 
               required
             />
 

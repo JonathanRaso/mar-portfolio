@@ -30,22 +30,22 @@ const getProjectById = async (req, res, next) => {
 
 const createProject = async (req, res, next) => {
   // Look into the request object and see if there are any validations error based on the config inside projects-routes.js
-  console.log(req.body);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     /* return console.log('Invalid inputs passed, please check your data'); */
     return next(new Error ('Invalid inputs passed, please check your data'));
   }
   
+  console.log(req.file);
   const projectData = req.body;
-  const { title, description, imageUrl } = projectData;
+  const { title, description } = projectData;
 
   const createdProject = new Project({
     title,
     description,
-    imageUrl
+    imageUrl: req.file.path,
   });
-  // console.log(createdProject);
+  console.log(createdProject);
 
   try {
     await createdProject.save();

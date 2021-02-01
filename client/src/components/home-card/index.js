@@ -7,10 +7,11 @@ const HomeCard = ({id, title, description, imageUrl}) => {
   return (
     <div className="card__container">
       <Link to={`/${id}`}>
-        <div key={`${id}`} className="card__body">
+        <div key={id} className="card__body">
           <img 
-            src="https://source.unsplash.com/random" 
-            alt=""
+            //TODO ===> Reaplce src when deploying
+            src={`http://localhost:5000/${imageUrl}`}/* "https://source.unsplash.com/random" */ 
+            alt={title}
             className="card__body--image"
           />
           <div className="card__overlay">

@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const path = require('path');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -19,7 +21,7 @@ const app = express();
 app.use(bodyParser.json());
 
 TODO://Add express-static middleware to serve images when uploading image will be added
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // --- CORS MIDDLEWARE --- //
 // This middleware will add header to every response, in order to take care of CORS issues
@@ -34,16 +36,6 @@ app.use((req, res, next) => {
 app.get('/' , (req, res, next) => {
   res.send('MAR-portfolio Server Running!!! ')
 })
-
-/* app.use(session({
-  secret:'secretKey',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: true,
-    maxAge: 3600000,
-  }
-})); */
 
 // --- ROUTES MIDDLEWARE --- // 
 app.use('/api/projects', projectsRoutes);

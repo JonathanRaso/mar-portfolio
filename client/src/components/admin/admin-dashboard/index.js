@@ -38,10 +38,22 @@ const AdminDashboard = () => {
     });  
   }
 
-  const handleSubmitCreateForm = (event) => {
+  const handleSubmitCreateForm = async (event) => {
     event.preventDefault();
-    const createForm = { title, description, imageUrl };
-    console.log(createForm);
+    /* const createForm = { title, description, imageUrl }; */
+    console.log(title, description, imageUrl);
+
+    try {
+      /* const formData = new FormData();
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('imageUrl', imageUrl);
+      console.log(formData); */
+      const response = await axios.post("http://localhost:5000/api/projects/add-project", { title, description, imageUrl } );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -51,10 +63,27 @@ const AdminDashboard = () => {
           <form onSubmit={handleSubmitLoginForm} action="" method="POST">
 
             <label htmlFor="username">Nom d'utilisateur</label>
-            <input id="username" type="text" name="username" value={username} onChange={(event) => {setUsername(event.target.value); console.log('username is : ' + username)}} required/>
+            <input 
+              id="username" 
+              type="text" 
+              name="username" 
+              value={username} 
+              onChange={(event) => {
+                setUsername(event.target.value);
+                console.log('username is : ' + username);
+              }} 
+              required/>
 
             <label htmlFor="password">Mot de passe</label>
-            <input id="password" type="password" name="password" value={password} onChange={(event) => {setPassword(event.target.value); console.log('password is : ' + password)}} required/>
+            <input 
+              id="password" 
+              type="password" 
+              name="password" 
+              value={password} 
+              onChange={(event) => {
+                setPassword(event.target.value); console.log('password is : ' + password)
+              }} 
+              required/>
 
             <input type="submit" value="Connexion"/>
           </form>
@@ -64,17 +93,42 @@ const AdminDashboard = () => {
       {login && 
         <div className="admin__container">        
           <form onSubmit={handleSubmitCreateForm} action="" method="POST">
+            <label htmlFor="title">Titre du projet</label>
+            <input 
+              id="title" 
+              type="text" 
+              name="title" 
+              value={title} 
+              onChange={(event) => {
+                setTitle(event.target.value); console.log('title is : ' + title)
+              }}
+              required
+            />
 
-          <label htmlFor="title">Titre du projet</label>
-          <input id="title" type="text" name="title" value={title} onChange={(event) => {setTitle(event.target.value); console.log('title is : ' + title)}}required/>
+            <label htmlFor="description">Description du projet</label>
+            <textarea 
+              id="description" 
+              name="description" 
+              value={description} 
+              onChange={(event) => {
+                setDescription(event.target.value); console.log('description is : ' + description)
+              }} 
+              required
+            />
 
-          <label htmlFor="description">Description du projet</label>
-          <input id="description" type="textarea" name="description" value={description} onChange={(event) => {setDescription(event.target.value); console.log('description is : ' + description)}} required/>
+            <label htmlFor="imageUrl">Description du projet</label>
+            <input 
+              id="imageUrl" 
+              type="text" 
+              name="imageUrl" 
+              value={imageUrl} 
+              onChange={(event) => {
+                setImageUrl(event.target.value); console.log('imageUrl is : ' + imageUrl)
+              }} 
+              required
+            />
 
-          <label htmlFor="imageUrl">Description du projet</label>
-          <input id="imageUrl" type="file" name="imageUrl" value={imageUrl} onChange={(event) => {setImageUrl(event.target.value); console.log('imageUrl is : ' + imageUrl)}} required/>
-
-          <input type="submit" value="Valider"/>
+            <input type="submit" value="Valider"/>
           </form>
         </div>  
       }

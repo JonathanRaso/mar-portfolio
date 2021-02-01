@@ -59,11 +59,12 @@ const AdminDashboard = () => {
   return (
     <main> 
       {!login &&
-        <div className="admin__container">
-          <form onSubmit={handleSubmitLoginForm} method="POST">
+        <div className="dashboard__form">
+          <form className="dashboard__login" onSubmit={handleSubmitLoginForm} method="POST">
 
-            <label htmlFor="username">Nom d'utilisateur</label>
+            <label className="dashboard__label" htmlFor="username">Nom d'utilisateur</label>
             <input 
+              className="dashboard__input"
               id="username" 
               type="text" 
               name="username" 
@@ -73,8 +74,9 @@ const AdminDashboard = () => {
               }} 
               required/>
 
-            <label htmlFor="password">Mot de passe</label>
+            <label className="dashboard__label" htmlFor="password">Mot de passe</label>
             <input 
+              className="dashboard__input"
               id="password" 
               type="password" 
               name="password" 
@@ -84,16 +86,18 @@ const AdminDashboard = () => {
               }} 
               required/>
 
-            <input type="submit" value="Connexion"/>
+            <input className="dashboard__button" type="submit" value="Connexion"/>
           </form>
         </div>
       }
       
       {login && 
-        <div className="admin__container">        
-          <form onSubmit={handleSubmitCreateForm} method="POST" encType="multipart/form-data">
-            <label htmlFor="title">Titre du projet</label>
+        <div className="dashboard__form">        
+          <form className="dashboard__creation" onSubmit={handleSubmitCreateForm} method="POST" encType="multipart/form-data">
+
+            <label className="dashboard__label" htmlFor="title">Titre du projet</label>
             <input 
+              className="dashboard__input"
               id="title" 
               type="text" 
               name="title" 
@@ -104,8 +108,9 @@ const AdminDashboard = () => {
               required
             />
 
-            <label htmlFor="description">Description du projet</label>
-            <textarea 
+            <label className="dashboard__label" htmlFor="description">Description du projet</label>
+            <textarea
+              className="dashboard__textarea" 
               id="description" 
               name="description" 
               value={description} 
@@ -115,20 +120,17 @@ const AdminDashboard = () => {
               required
             />
 
-            <label htmlFor="imageUrl">Description du projet</label>
-            <input 
+            <label className="dashboard__label" htmlFor="imageUrl">Description du projet</label>
+            <input
+              className="dashboard__input" 
               id="imageUrl" 
               type="file" 
               name="imageUrl" 
-              /* value={imageFile}  */
-              onChange={/* (event) => {
-                setImageFile(event.target.value);
-                console.log(event.target.value, event.target.files);
-              }*/ handleFileChange} 
+              onChange={handleFileChange} 
               required
             />
 
-            <input type="submit" value="Valider"/>
+            <input className="dashboard__button" type="submit" value="Valider"/>
           </form>
         </div>  
       }

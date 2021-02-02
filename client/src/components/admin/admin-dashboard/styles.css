@@ -1,15 +1,19 @@
-main {
+.admin__container {
+  width: 100%;
 }
 
 .dashboard__form {
   border-radius: 5px;
-  background-color: #ccc;
+  background-color: var(--clr-white);
+  box-shadow: var(--bs-infos);
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 2px solid black;
   margin: 0 auto;
   padding: 2rem;
   width: 80%;
+  /* height: 50%; */
 }
 
 .dashboard__login,
@@ -20,36 +24,49 @@ main {
 }
 
 .dashboard__label {
-  /* margin-top: 0.5rem;
-  margin-bottom: 0.5rem; */
   margin: 0.5rem auto;
   text-decoration: underline;
+  /* font-size: var(--fs-small); */
+}
+
+.dashboard__input {
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard__textarea {
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-bottom: 0.5rem;
 }
 
 .dashboard__button {
   margin: 1rem auto 0;
-}
-
-
-
-
-/* .dashboard__login,
-.dashboard__creation {
-  display: flex;
-  margin: 0 auto;
-} */
-/* .dashboard * {
-  display: block;
-} */
-
-/* .dashboard__button {
   background-color: var(--clr-white);
   color: var(--clr-second);
-  border: 2px solid var(--clr-black);
+  border: 2px solid black;
   border-radius: 5px;
-  margin-top: 0.5em;
 }
+
 .dashboard__button:hover {
+  margin: 1rem auto 0;
   background-color: var(--clr-second);
   color: var(--clr-white);
-} */
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 42em) {
+  .dashboard__form {
+    width: 50%;
+    /* height: 50%; */
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .dashboard__form {
+    width: 30%;
+    /* height: 50%; */
+  }
+}

@@ -24,7 +24,8 @@ const Home = () => {
   }, []); 
 
   return (
-    <main className="homepage__body flex">
+    <main>
+      <div className="homepage__container">
       {loadedProjects && 
         loadedProjects.map((project) => {
           return (
@@ -38,8 +39,25 @@ const Home = () => {
           )
         })
       }
+      </div>
     </main>
   )
 };
 
 export default Home;
+
+/* <main className="homepage__body">
+      {loadedProjects && 
+        loadedProjects.map((project) => {
+          return (
+            <HomeCard 
+              key={project.id}
+              id={project.id}
+              title={project.title}
+              description={project.description}
+              imageUrl={project.imageUrl}
+            />
+          )
+        })
+      }
+    </main> */

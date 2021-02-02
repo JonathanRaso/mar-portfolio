@@ -13,12 +13,16 @@ const AdminDashboard = () => {
 
   const history = useHistory();
 
+  // Login form state
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  // Create form state
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState();
+
+  const [fileName, setFileName] = useState("");
   
   const handleSubmitLoginForm = (event) => {
     event.preventDefault();
@@ -35,6 +39,7 @@ const AdminDashboard = () => {
 
   const handleFileChange = (event) => {
     setImageFile(event.target.files[0]);
+    setFileName(event.target.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1]);
   }
 
   const handleSubmitCreateForm = async (event) => {
@@ -123,7 +128,7 @@ const AdminDashboard = () => {
                 required
               />
 
-              <label className="dashboard__label" htmlFor="imageUrl">Choisir une image</label>
+              <label className="dashboard__label--file" htmlFor="imageUrl">Choisir une image</label>
               <input
                 className="dashboard__input" 
                 id="imageUrl" 
@@ -131,7 +136,9 @@ const AdminDashboard = () => {
                 name="imageUrl" 
                 onChange={handleFileChange} 
                 required
+                hidden
               />
+              <span className="dashboard__filename">{fileName ? fileName : "Aucun fichier choisi!" }</span>
 
               <input className="dashboard__button" type="submit" value="Valider"/>
             </form>

@@ -45,8 +45,10 @@
   margin: 1rem auto 0;
   background-color: var(--clr-white);
   color: var(--clr-second);
-  border: 2px solid black;
+  border: 2px solid var(--clr-black);
   border-radius: 5px;
+  box-shadow: var(--bs-basic);
+  transition: all 450ms ease-in;
 }
 
 .dashboard__button:hover {
@@ -55,6 +57,30 @@
   color: var(--clr-white);
   border: 2px solid black;
   border-radius: 5px;
+}
+
+.dashboard__label--file {
+  background-color: var(--clr-second);
+  color: var(--clr-white);
+  border: 2px solid var(--clr-black);
+  margin: 0 auto;
+  width: 40%;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: var(--bs-basic);
+  transition: all 450ms ease-in;
+}
+
+.dashboard__label--file:hover {
+  background-color: var(--clr-black);
+  /* color: var(--clr-second); */
+}
+
+.dashboard__filename {
+  text-align: center;
+  margin-top: 0.8em;
 }
 
 @media screen and (min-width: 42em) {

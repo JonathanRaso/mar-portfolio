@@ -21,6 +21,9 @@ header {
   color: var(--clr-second);
 }
 
+/***********************************************
+****** BURGER MENU FOR MOBILE/TABLET SIZE ******
+***********************************************/
 .nav-toggle-label {
   position: absolute;
   top: 0;
@@ -38,8 +41,10 @@ header {
   background: var(--clr-black);
   height: 2px;
   width: 1.5em;
-  border-radius: 10px;
+  border-radius: 50px;
   position: relative;
+  transition: all .5s ease-in-out;
+  text-shadow: var(--ts-basic);
 }
 
 .nav-toggle-label span::before,
@@ -54,6 +59,24 @@ header {
 
 .nav-toggle-label span::after {
   top: 7px;
+}
+
+/**********************************
+****** BURGER MENU ANIMATION ******
+**********************************/
+.nav-toggle:checked ~ .nav-toggle-label span {
+  background-color: transparent;
+  transform: translateX(5px);
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span::before {
+  background-color: var(--clr-second);
+  transform: rotate(45deg) translateY(10px) ;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span::after {
+  background-color: var(--clr-second);
+  transform: rotate(-45deg) translateY(-10px);
 }
 
 
@@ -89,6 +112,9 @@ nav a {
   transition: opacity 150ms ease-in-out;
 }
 
+/****************************************************
+****** NAV LINK AND DIV ANIMATION WHEN CHECKED ******
+****************************************************/
 .nav-toggle:checked ~ nav {
   transform: scale(1, 1)
 }
@@ -98,7 +124,11 @@ nav a {
   transition: opacity 250ms ease-in-out 250ms;
 }
 
-@media screen and (min-width: 800px) {
+
+/********************************************
+****** MEDIA QUERIES AFTER TABLET SIZE ******
+********************************************/
+@media screen and (min-width: 52em) {
   .nav-toggle-label {
     display: none;
   }

@@ -34,7 +34,7 @@ const createProject = async (req, res, next) => {
   // Look into the request object and see if there are any validations error based on the config inside projects-routes.js
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    /* return console.log('Invalid inputs passed, please check your data'); */
+    console.log(errors);
     return next(new Error ('Invalid inputs passed, please check your data'));
   }
   
@@ -49,13 +49,18 @@ const createProject = async (req, res, next) => {
   });
   console.log(createdProject);
 
+  /* if (!createdProject.title.length < 3 || !createdProject.description.length < 15 || !createdProject.imageUrl) {
+    console.log('ERROR = input missing');
+    return next(new Error('Vous devez renseigner tous les champs pour créer un projet.'));
+  } */
+
   try {
     await createdProject.save();
   } catch (err) {
     return next(err);
   }
 
-  res.status(201).json({ message: "Project has been added!" })
+  res.status(201).json({ message: "Le projet a bien été créé !" })
 }
 
 const updateProject = async (req, res, next) => {

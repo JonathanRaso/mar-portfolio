@@ -22,6 +22,7 @@ const AdminDashboard = () => {
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState();
 
+  // Display file name before form submit
   const [fileName, setFileName] = useState("");
   
   const handleSubmitLoginForm = (event) => {
@@ -53,8 +54,11 @@ const AdminDashboard = () => {
       const response = await axios.post("http://localhost:5000/api/projects/add-project", formData );
       /* TODO ==> Remove console.log(response) */
       console.log(response);
+      console.log(response.status);
+      console.log(response.data.message);
     } catch (error) {
       console.log(error);
+      console.log(error.message);
     }
     /* TODO ==> Redirect only if creation is successful (201). */
     history.push('/');
@@ -64,8 +68,9 @@ const AdminDashboard = () => {
   return (
     <main> 
       <div className="admin__container">
+      <span>Le projet à bien été créé !</span>
         {!login &&
-          <div className="dashboard__form">
+          <div className="dashboard__form">  
             <form className="dashboard__login" onSubmit={handleSubmitLoginForm} method="POST">
 
               <label className="dashboard__label" htmlFor="username">Nom d'utilisateur</label>

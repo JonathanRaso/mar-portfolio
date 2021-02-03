@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const path = require('path');
+const fs = require('fs');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -50,6 +51,13 @@ app.use((req, res, next) => {
 
 // --- ERROR HANDLING MIDDLEWARE --- //
 app.use((err, req, res, next) => {
+  // Checking if there is a file. If so, we remove this file before adding it in images folder.
+  if (req.file) {
+    /* console.log(req.file); */
+    fs.unlink(req.file.path, (err) => {
+      console.log('Picture removed because project creation failed !')
+    })
+  }
   res.status(err.status || 500)
   res.send({
     error: {

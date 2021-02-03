@@ -22,8 +22,7 @@ router.patch(
   projectsController.updateProject);
 router.delete('/:id', projectsController.deleteProject);
 
-router.post(
-  // TODO Add fileUpload middleware for image upload 
+router.post( 
   '/add-project',
   fileUpload.single('imageUrl'),
   [

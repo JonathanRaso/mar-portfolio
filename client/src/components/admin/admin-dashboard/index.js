@@ -24,6 +24,9 @@ const AdminDashboard = () => {
 
   // Display file name before form submit
   const [fileName, setFileName] = useState("");
+
+  // Display error/success message
+  const [creationResult, setCreationResult] = useState("");
   
   const handleSubmitLoginForm = (event) => {
     event.preventDefault();
@@ -32,9 +35,11 @@ const AdminDashboard = () => {
     axios.post("http://localhost:5000/api/users/login", { username, password })
     .then(function (response) {
       setLogin(true);
+      setCreationResult("");
     })
     .catch(function (error) {
       console.log(error);
+      setCreationResult("La connexion a échoué, veuillez recommencer.");
     });  
   }
 
@@ -56,19 +61,34 @@ const AdminDashboard = () => {
       console.log(response);
       console.log(response.status);
       console.log(response.data.message);
+      setCreationResult("Création du projet réussie! Redirection en cours.");
+
+      setTimeout(() => {
+        setCreationResult("");
+        history.push('/');
+      }, 3500);
+
     } catch (error) {
       console.log(error);
       console.log(error.message);
+      setCreationResult("La création du projet a échoué, veuillez recommencer.");
     }
     /* TODO ==> Redirect only if creation is successful (201). */
-    history.push('/');
+    /* history.push('/'); */
+    /* setTimeout(() => {
+      setCreationResult("");
+      history.push('/');
+    }, 3500); */
+
 
   }
 
   return (
     <main> 
       <div className="admin__container">
-      <span>Le projet à bien été créé !</span>
+        {creationResult &&
+          <span className="dashboard__message">{creationResult}</span>
+        }
         {!login &&
           <div className="dashboard__form">  
             <form className="dashboard__login" onSubmit={handleSubmitLoginForm} method="POST">

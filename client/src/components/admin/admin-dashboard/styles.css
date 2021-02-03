@@ -2,6 +2,19 @@
   width: 100%;
 }
 
+.dashboard__message {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  margin: 0.5rem auto;
+  background-color: var(--clr-fourth);
+  color: var(--clr-black);
+  border-radius: 5px;
+  width: 80%;
+  /* text-shadow: var(--ts-basic); */
+  box-shadow: var(--bs-basic);
+}
+
 .dashboard__form {
   border-radius: 5px;
   background-color: var(--clr-white);
@@ -84,15 +97,15 @@
 }
 
 @media screen and (min-width: 42em) {
-  .dashboard__form {
+  .dashboard__form,
+  .dashboard__message {
     width: 50%;
-    /* height: 50%; */
   }
 }
 
 @media screen and (min-width: 62em) {
-  .dashboard__form {
-    width: 30%;
-    /* height: 50%; */
+  .dashboard__form,
+  .dashboard__message {
+    width: 35%;
   }
 }

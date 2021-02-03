@@ -1,8 +1,6 @@
-
 import { useState, useMemo } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-/* import Navbar from './components/shared/navbar/index.js' */
 import Navbar from './components/shared/navbar/index.js';
 import Home from './components/home/index.js';
 import Infos from './components/infos/index.js';
@@ -12,7 +10,6 @@ import AdminDashboard from './components/admin/admin-dashboard/index.js';
 
 import { AuthContext } from './components/context/auth-context';
 
-/* import AdminDashboard from './components/dashboard/index'; */
 
 import './App.css';
 

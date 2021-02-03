@@ -4,7 +4,8 @@
   height: 400px;
   flex-grow: 1;
   flex-shrink: 1;
-  /* border-radius: 10px; */
+  border-radius: 10px;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
 }
 
 
@@ -36,6 +37,8 @@
   opacity: 0;
   transition: opacity 0.5s;
   border-radius: 10px;
+
+  padding: 0.5em;
 }
 
 /* Nth-child for overlay colors (:hover background) */
@@ -62,6 +65,7 @@ main .card__container:nth-child(4n + 4) .card__overlay {
 
 .card__overlay:hover {
   opacity: 1;
+  border: 6px solid #444444;
 }
 
 .card__overlay:hover > * {
@@ -72,6 +76,7 @@ main .card__container:nth-child(4n + 4) .card__overlay {
   font-size: 2em;
   font-weight: bold;
   margin-bottom: .5em;
+  text-align: center;
 }
 
 .card__overlay--description {

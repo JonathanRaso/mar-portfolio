@@ -19,33 +19,35 @@ const ProjectDetails = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  /* const [editForm, setEditForm] = useState(""); */
+  // Display error/success message
+  const [creationResult, setCreationResult] = useState("");
 
 
   const handleDeleteButton = async () => {
     /* console.log("suppression du projet numéro" + projectId); */
     try {
       await axios.delete(`http://localhost:5000/api/projects/${projectId}`);
-      console.log("Projet supprimé!");
+      setCreationResult("Suppression réussie! ");
+
+      setTimeout(() => {
+        setCreationResult("");
+        history.push('/');
+      }, 3500);
+
     } catch (error) {
       console.log(error);
+      setCreationResult("La suppression a échoué, veuillez recommencer.");
     }
-    return history.push("/");
+    /* return history.push("/"); */
   }
 
   const handleSubmitEditForm = async (event) => {
     // 1 - Disable normal behaviour of form when submit
     event.preventDefault();
-    /* console.log(title.length, description.length);
-    console.log(specificProject.title, specificProject.description);
-    console.log("Edit form submitted");
-    console.log("titre : " + title, "description : " + description); */
     
     // 2 - Get data from form
     let editedTitle = title;
     let editedDescription = description;
-    
-    /* console.log(editedTitle, editedDescription); */
 
     // 2 - Check if one of the input is missing. If so, add previous data in order to send something complete to the server.
     // If not, express-validator will send 500 response because he needs a title and a description with at least 3 and 15 characters.
@@ -68,14 +70,22 @@ const ProjectDetails = () => {
       const response = await axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title : editedTitle, description: editedDescription });
       /* const response = await axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title, description }); */
       console.log(title, description);
-      console.log("titre : " + editedTitle, "description : " + editedDescription)
+      /* console.log("titre : " + editedTitle, "description : " + editedDescription) */
       console.log(response);
-      console.log(response.data);
-      console.log(specificProject.title, specificProject.description)
+      /* console.log(response.data); */
+      /* console.log(specificProject.title, specificProject.description); */
+      setCreationResult("Modification réussie! ");
+
+      setTimeout(() => {
+        setCreationResult("");
+        history.push('/');
+      }, 3500);
+      
     } catch (error) {
       console.log(error);
+      setCreationResult("La modification a échoué, veuillez recommencer.");
     }
-    return history.push("/");
+    /* return history.push("/"); */
   }
 
   useEffect(() => {
@@ -104,7 +114,10 @@ const ProjectDetails = () => {
     <main>
       <div className="project__container">
       {login && 
-          <div className="admin__form">
+        <div className="admin__form">
+        {creationResult &&
+          <span className="dashboard__message">{creationResult}</span>
+        }
             <form className="admin__edit" onSubmit={handleSubmitEditForm} method="POST">
 
               <label className="admin__label" htmlFor="title">Titre</label>

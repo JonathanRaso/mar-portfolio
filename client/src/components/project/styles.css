@@ -1,7 +1,6 @@
 /***************
 DASHBOARD DIV
 ***************/
-
 .admin__form {
   border: 2px solid black;
   width: 80%;
@@ -32,6 +31,19 @@ DASHBOARD DIV
   border: 2px solid var(--clr-black);
   border-radius: 5px;
   transition: all 450ms ease-in;
+}
+
+.dashboard__message {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  margin: 0.5rem auto;
+  background-color: var(--clr-fourth);
+  color: var(--clr-black);
+  border-radius: 5px;
+  width: 80%;
+  /* text-shadow: var(--ts-basic); */
+  box-shadow: var(--bs-basic);
 }
 
 /***************

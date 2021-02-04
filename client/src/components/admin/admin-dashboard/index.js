@@ -25,6 +25,7 @@ const AdminDashboard = () => {
   // Display file name before form submit
   const [fileName, setFileName] = useState("");
 
+  // TODO ==> add to context
   // Display error/success message
   const [creationResult, setCreationResult] = useState("");
   
@@ -39,6 +40,7 @@ const AdminDashboard = () => {
     })
     .catch(function (error) {
       console.log(error);
+      console.log(typeof creationResult, typeof setCreationResult);
       setCreationResult("La connexion a échoué, veuillez recommencer.");
     });  
   }

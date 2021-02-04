@@ -16,10 +16,14 @@ import './App.css';
 function App() {
   const [login, setLogin] = useState(false);
 
-  const value = useMemo(() => ({ login, setLogin }), [login, setLogin]);
+  const isLogged = useMemo(() => ({ login, setLogin }), [login, setLogin]);
+
+  /*TODO ==> add errorMessage to context api*/
+  /* const [creationResult, setCreationResult] = useState("test");
+  const errorMessage = useMemo(() => ({ creationResult, setCreationResult }), [creationResult, setCreationResult]); */
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={isLogged}>
       <div className="App">
         <Navbar />
         <Switch>

@@ -5,6 +5,7 @@ import Navbar from './components/shared/navbar/index.js';
 import Home from './components/home/index.js';
 import Infos from './components/infos/index.js';
 import ProjectDetails from './components/project/index.js';
+import NoMatch from './components/shared/404';
 
 import AdminDashboard from './components/admin/admin-dashboard/index.js';
 
@@ -27,20 +28,20 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path="/infos" exact>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/infos">
             <Infos />
           </Route>
-          <Route path="/admin" exact>
+          <Route exact path="/admin">
             <AdminDashboard />
           </Route>
-          {/* <Route path="/admin" exact>
-            <AdminDashboard />
-          </Route> */}
-          <Route path="/:projectId">
+          <Route exact path="/:projectId">
             <ProjectDetails />
           </Route>
-          <Route path="/" exact>
-            <Home />
+          <Route>
+            <NoMatch />
           </Route>
         </Switch>
       </div>

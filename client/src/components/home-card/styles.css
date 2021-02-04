@@ -43,19 +43,19 @@
 
 /* Nth-child for overlay colors (:hover background) */
 main .card__container:nth-child(4n + 1) .card__overlay {
-  background: var(--clr-first);
+  background: var(--clr-tspr-first);
 }
 
 main .card__container:nth-child(4n + 2) .card__overlay {
-  background: var(--clr-second);
+  background: var(--clr-tspr-second);
 }
 
 main .card__container:nth-child(4n + 3) .card__overlay {
-  background: var(--clr-third);
+  background: var(--clr-tspr-third);
 }
 
 main .card__container:nth-child(4n + 4) .card__overlay {
-  background: var(--clr-fourth);
+  background: var(--clr-tspr-fourth);
 }
 
 .card__overlay > * {

@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { AuthContext } from '../context/auth-context';
+import NoMatch from '../shared/404';
 
 import '../../App.css';
 import './styles.css';
@@ -80,7 +81,7 @@ const ProjectDetails = () => {
         setCreationResult("");
         history.push('/');
       }, 3500);
-      
+
     } catch (error) {
       console.log(error);
       setCreationResult("La modification a échoué, veuillez recommencer.");
@@ -104,13 +105,15 @@ const ProjectDetails = () => {
         
         setSpecificProject(projectData.data.project);
       } catch (err) {
-        console.log(err);
+        console.log(err, ' Ce projet ne se trouve pas sur le site');
       }
     }
     fetchSpecificProject();
   }, [projectId]);
 
   return (
+    <>
+    {!specificProject && <NoMatch />}
     <main>
       <div className="project__container">
       {login && 
@@ -171,6 +174,7 @@ const ProjectDetails = () => {
       </div>
       </div>
     </main>
+    </>
   )
 };
 

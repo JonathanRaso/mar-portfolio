@@ -1,0 +1,11 @@
+.nopage__text {
+  text-align: center;
+  border: 2px solid black;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background-color: var(--clr-first);
+  color: var(--clr-white);
+  text-shadow: var(--ts-basic);
+  box-shadow: var(--bs-infos);
+  border-radius: 15px;
+}

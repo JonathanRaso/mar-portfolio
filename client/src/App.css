@@ -15,6 +15,11 @@
   --fs-large: 2.25rem;
 
   /* COLORS */
+  --clr-tspr-first: rgba(16, 37, 66, 0.9);
+  --clr-tspr-second: rgba(218, 1, 1, 0.9);
+  --clr-tspr-third: rgba(96, 225, 224, 0.9);
+  --clr-tspr-fourth: rgba(255, 159, 28, 0.9);
+
   --clr-first: #102542;
   --clr-second: #DA0101;
   --clr-third: #60E1E0;

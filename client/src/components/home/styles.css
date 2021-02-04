@@ -9,19 +9,26 @@ main {
   align-items: center;
   margin-top: 6.5rem;
   height: 80vh;
+  animation: transitionIn .5s ease-in-out;
 }
-
-/******
-This is used for limiting size of the last home-card element. 
-It doesn't grow to full width thanks to thix declaration.
-******/
-/* main::after {
-  content: '';
-  flex-grow: 10;
-} */
 
 .homepage__container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/*********************************************
+**** Transition effect when changing page ****
+*********************************************/
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

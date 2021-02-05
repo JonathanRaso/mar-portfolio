@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { AuthContext } from '../context/auth-context';
 import NoMatch from '../shared/404';
+import LoadingSpinner from '../shared/loading/index';
 
 import '../../App.css';
 import './styles.css';
@@ -23,6 +24,7 @@ const ProjectDetails = () => {
   // Display error/success message
   const [creationResult, setCreationResult] = useState("");
 
+  const [loading, setLoading] = useState();
 
   const handleDeleteButton = async () => {
     /* console.log("suppression du projet numéro" + projectId); */
@@ -100,12 +102,15 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     const fetchSpecificProject = async () => {
+      setLoading(true);
       try {
         const projectData = await axios.get(`http://localhost:5000/api/projects/${projectId}`);
         
         setSpecificProject(projectData.data.project);
+        setLoading(false);
       } catch (err) {
         console.log(err, ' Ce projet ne se trouve pas sur le site');
+        setLoading(false);
       }
     }
     fetchSpecificProject();
@@ -113,9 +118,12 @@ const ProjectDetails = () => {
 
   return (
     <>
-    {!specificProject && <NoMatch />}
     <main>
-      <div className="project__container">
+    <div className="project__container">
+    {loading && 
+      <LoadingSpinner />
+    }
+    {!loading && !specificProject && <NoMatch />}
       {login && 
         <div className="admin__form">
         {creationResult &&
@@ -157,21 +165,25 @@ const ProjectDetails = () => {
           </div>
       }
 
-      <div className={`project__picture project__picture--${backgroundColor}`}>
-        {specificProject &&
-        <>
-          <img src={`http://localhost:5000/${specificProject.imageUrl}`} alt={specificProject.title}/>
-        </> 
-        }
-      </div>
-      <div className={`project__info project__info--${backgroundColor}`}>
-        {specificProject &&
-        <>
-          <h2 className="project__info--title">{specificProject.title}</h2>
-          <p className="project__info--description">{specificProject.description}. Minima quasi iste nobis unde adipisci totam ullam quaerat! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, eaque ipsa?</p>
-        </> 
-        }
-      </div>
+      {!loading && specificProject &&
+      <>
+        <div className={`project__picture project__picture--${backgroundColor}`}>
+          {specificProject &&
+          <>
+            <img src={`http://localhost:5000/${specificProject.imageUrl}`} alt={specificProject.title}/>
+          </>
+          }
+        </div>
+        <div className={`project__info project__info--${backgroundColor}`}>
+          {specificProject &&
+          <>
+            <h2 className="project__info--title">{specificProject.title}</h2>
+            <p className="project__info--description">{specificProject.description}. Minima quasi iste nobis unde adipisci totam ullam quaerat! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, eaque ipsa?</p>
+          </> 
+          }
+        </div>
+      </>
+      }
       </div>
     </main>
     </>

@@ -16,7 +16,8 @@
   /* border-radius: 10px; */
 }
 
-.card__body > img {
+/*.card__body > img */
+.card__body--image {
   width: 100%;
   height: 100%;
   object-fit: cover;

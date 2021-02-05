@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import HomeCard from '../home-card/index.js';
+import LoadingSpinner from '../shared/loading/index.js';
 
 import '../../App.css';
 import './styles.css';
 
 const Home = () => {
 
-  const [loadedProjects, setLoadedProjects] = useState();
+  const [loadedProjects, setLoadedProjects] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -28,7 +29,7 @@ const Home = () => {
       <div className="homepage__container">
       {loadedProjects && 
         loadedProjects.map((project) => {
-          return (
+          return ( 
             <HomeCard 
               key={project.id}
               id={project.id}

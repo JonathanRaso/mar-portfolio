@@ -1,0 +1,25 @@
+.loading__spinner {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.loading__spinner::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  border: 10px solid transparent;
+  /* background: var(--clr-second); */
+  border-top-color: var(--clr-second);
+  border-bottom-color: var(--clr-second);
+  margin: 0 auto;
+  /* border: 2px solid black; */
+  border-radius: 50%;
+  animation: loading 1s ease infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}

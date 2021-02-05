@@ -53,6 +53,9 @@ PROJECT__PICTURE DIV
   /* background-color: brown; */
   display: flex;
   flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  margin: 0 auto;
   /* height: 100%; */
   /* padding: 50px; */
 }
@@ -124,9 +127,9 @@ PROJECT__INFO DIV
   TABLET MEDIA QUERIES
 ******************/
 @media screen and (min-width: 43em) {
-  main::after{
+  /* main::after{
     content: none;
-  }
+  } */
 
   .project__container {
     /* display: flex; */

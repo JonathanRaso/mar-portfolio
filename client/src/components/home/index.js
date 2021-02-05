@@ -11,14 +11,19 @@ const Home = () => {
 
   const [loadedProjects, setLoadedProjects] = useState(null);
 
+  const [loading, setLoading] = useState();
+
   useEffect(() => {
     const fetchProjects = async () => {
+      setLoading(true);
       try {
         const projectsRequest = await axios.get('http://localhost:5000/api/projects');
 
         setLoadedProjects(projectsRequest.data.projects);
+        setLoading(false);
       } catch (err) {
-        console.log(err)
+        console.log(err);
+        setLoading(false);
       }
     };
     fetchProjects();
@@ -27,7 +32,10 @@ const Home = () => {
   return (
     <main>
       <div className="homepage__container">
-      {loadedProjects && 
+      {loading && 
+        <LoadingSpinner />
+      }
+      {!loading && loadedProjects && 
         loadedProjects.map((project) => {
           return ( 
             <HomeCard 

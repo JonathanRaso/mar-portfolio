@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import { AuthContext } from '../../context/auth-context';
 
+import LoadingSpinner from '../../shared/loading/index';
+
 import '../../../App.css';
 import './styles.css';
 
@@ -12,6 +14,8 @@ const AdminDashboard = () => {
   const { login, setLogin } = useContext(AuthContext);
 
   const history = useHistory();
+
+  const [loading, setLoading] = useState(false);
 
   // Login form state
   const [username, setUsername] = useState("");
@@ -31,16 +35,16 @@ const AdminDashboard = () => {
   
   const handleSubmitLoginForm = (event) => {
     event.preventDefault();
-      
+    setLoading(true);  
     /* TODO ==> Replace .then.catch with async try and catch */
     axios.post("http://localhost:5000/api/users/login", { username, password })
     .then(function (response) {
       setLogin(true);
+      setLoading(false);
       setCreationResult("");
     })
     .catch(function (error) {
-      console.log(error);
-      console.log(typeof creationResult, typeof setCreationResult);
+      setLoading(false);
       setCreationResult("La connexion a échoué, veuillez recommencer.");
     });  
   }
@@ -52,6 +56,7 @@ const AdminDashboard = () => {
 
   const handleSubmitCreateForm = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     try {
       const formData = new FormData();
@@ -63,6 +68,7 @@ const AdminDashboard = () => {
       console.log(response);
       console.log(response.status);
       console.log(response.data.message);
+      setLoading(false);
       setCreationResult("Création du projet réussie! Redirection en cours.");
 
       setTimeout(() => {
@@ -73,15 +79,9 @@ const AdminDashboard = () => {
     } catch (error) {
       console.log(error);
       console.log(error.message);
+      setLoading(false);
       setCreationResult("La création du projet a échoué, veuillez recommencer.");
     }
-    /* TODO ==> Redirect only if creation is successful (201). */
-    /* history.push('/'); */
-    /* setTimeout(() => {
-      setCreationResult("");
-      history.push('/');
-    }, 3500); */
-
 
   }
 
@@ -92,8 +92,9 @@ const AdminDashboard = () => {
           <span className="dashboard__message">{creationResult}</span>
         }
         {!login &&
-          <div className="dashboard__form">  
-            <form className="dashboard__login" onSubmit={handleSubmitLoginForm} method="POST">
+          <div className="dashboard__form">
+            {!loading && 
+              <form className="dashboard__login" onSubmit={handleSubmitLoginForm} method="POST">
 
               <label className="dashboard__label" htmlFor="username">Nom d'utilisateur</label>
               <input 
@@ -121,12 +122,17 @@ const AdminDashboard = () => {
 
               <input className="dashboard__button" type="submit" value="Connexion"/>
             </form>
+            }  
+            {loading && 
+              <LoadingSpinner />  
+            }
           </div>
         }
         
         {login && 
-          <div className="dashboard__form">        
-            <form className="dashboard__creation" onSubmit={handleSubmitCreateForm} method="POST" encType="multipart/form-data">
+          <div className="dashboard__form">  
+            {!loading && 
+              <form className="dashboard__creation" onSubmit={handleSubmitCreateForm} method="POST" encType="multipart/form-data">
 
               <label className="dashboard__label" htmlFor="title">Titre du projet</label>
               <input 
@@ -169,6 +175,10 @@ const AdminDashboard = () => {
 
               <input className="dashboard__button" type="submit" value="Valider"/>
             </form>
+            }      
+            {loading && 
+              <LoadingSpinner />  
+            }
           </div>  
         }
       </div>

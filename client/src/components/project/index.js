@@ -24,14 +24,21 @@ const ProjectDetails = () => {
   // Display error/success message
   const [creationResult, setCreationResult] = useState("");
 
-  const [loading, setLoading] = useState();
+  // Loading before specific project data
+  const [preLoading, setPreLoading] = useState();
+
+  // Loading for edit/delete http request
+  const [loading, setLoading] = useState(false);
 
   const handleDeleteButton = async () => {
-    /* console.log("suppression du projet numéro" + projectId); */
+    
+    setLoading(true);
+
     try {
       await axios.delete(`http://localhost:5000/api/projects/${projectId}`);
-      setCreationResult("Suppression réussie! ");
 
+      setLoading(false);
+      setCreationResult("Suppression réussie! ");
       setTimeout(() => {
         setCreationResult("");
         history.push('/');
@@ -39,14 +46,15 @@ const ProjectDetails = () => {
 
     } catch (error) {
       console.log(error);
+      setLoading(false);
       setCreationResult("La suppression a échoué, veuillez recommencer.");
     }
-    /* return history.push("/"); */
   }
 
   const handleSubmitEditForm = async (event) => {
     // 1 - Disable normal behaviour of form when submit
     event.preventDefault();
+    setLoading(true);
     
     // 2 - Get data from form
     let editedTitle = title;
@@ -64,9 +72,6 @@ const ProjectDetails = () => {
       console.log("description non renseignée");
     };
 
-    /* console.log("titre après if : " + editedTitle, "description après if: " + editedDescription); */
-
-
     // 3 - Async patch request to update infos inside DB and redirect admin to homepage if request successful.
     try {
       console.log(editedTitle, editedDescription);
@@ -77,6 +82,7 @@ const ProjectDetails = () => {
       console.log(response);
       /* console.log(response.data); */
       /* console.log(specificProject.title, specificProject.description); */
+      setLoading(false);
       setCreationResult("Modification réussie! ");
 
       setTimeout(() => {
@@ -86,6 +92,7 @@ const ProjectDetails = () => {
 
     } catch (error) {
       console.log(error);
+      setLoading(false);
       setCreationResult("La modification a échoué, veuillez recommencer.");
     }
     /* return history.push("/"); */
@@ -102,15 +109,15 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     const fetchSpecificProject = async () => {
-      setLoading(true);
+      setPreLoading(true);
       try {
         const projectData = await axios.get(`http://localhost:5000/api/projects/${projectId}`);
         
         setSpecificProject(projectData.data.project);
-        setLoading(false);
+        setPreLoading(false);
       } catch (err) {
         console.log(err, ' Ce projet ne se trouve pas sur le site');
-        setLoading(false);
+        setPreLoading(false);
       }
     }
     fetchSpecificProject();
@@ -120,12 +127,15 @@ const ProjectDetails = () => {
     <>
     <main>
     <div className="project__container">
-    {loading && 
+    {preLoading && 
       <LoadingSpinner />
     }
-    {!loading && !specificProject && <NoMatch />}
+    {!preLoading && !specificProject && <NoMatch />}
       {login && 
         <div className="admin__form">
+        {loading && 
+          <LoadingSpinner />
+        }   
         {creationResult &&
           <span className="dashboard__message">{creationResult}</span>
         }
@@ -165,7 +175,7 @@ const ProjectDetails = () => {
           </div>
       }
 
-      {!loading && specificProject &&
+      {!preLoading && specificProject &&
       <>
         <div className={`project__picture project__picture--${backgroundColor}`}>
           {specificProject &&

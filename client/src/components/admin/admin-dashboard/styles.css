@@ -11,8 +11,8 @@
   color: var(--clr-black);
   border-radius: 5px;
   width: 80%;
-  /* text-shadow: var(--ts-basic); */
   box-shadow: var(--bs-basic);
+  text-align: center;
 }
 
 .dashboard__form {
@@ -26,7 +26,6 @@
   margin: 0 auto;
   padding: 2rem;
   width: 80%;
-  /* height: 50%; */
 }
 
 .dashboard__login,

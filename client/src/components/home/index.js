@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 
 import HomeCard from '../home-card/index.js';
 import LoadingSpinner from '../shared/loading/index.js';
 
 import '../../App.css';
 import './styles.css';
+
+/* const HomeCard = lazy(() => import('../home-card/index.js')); */
 
 const Home = () => {
 
@@ -28,6 +31,7 @@ const Home = () => {
     };
     fetchProjects();
   }, []); 
+
 
   return (
     <main>

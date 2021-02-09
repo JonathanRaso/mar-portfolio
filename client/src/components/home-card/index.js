@@ -16,11 +16,11 @@ const HomeCard = ({id, title, description, imageUrl}) => {
               className="card__body--image"
               width="300px"
               height="400px"
-              threshold={0}
+              threshold="0"
             />
           <div className="card__overlay">
-            <h2 className="card__overlay--title">{`${title}`}</h2>
-            <p className="card__overlay--description">{`${description}`}</p>
+            <h2 className="card__overlay--title">{`${title.substring(0, 25)}`}</h2>
+            <p className="card__overlay--description">{`${description.substring(0, 100)}`}</p>
           </div>
         </div>
       </Link>

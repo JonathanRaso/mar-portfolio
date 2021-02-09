@@ -41,6 +41,7 @@
   border-radius: 15px;
   margin-bottom: 1em;
   box-shadow: var(--bs-infos);
+  padding: 1rem;
 }
 
 .infos__medium {
@@ -48,6 +49,7 @@
   border-radius: 15px;
   margin-bottom: 1em;
   box-shadow: var(--bs-infos);
+  padding: 1rem;
 }
 
 .infos__social {

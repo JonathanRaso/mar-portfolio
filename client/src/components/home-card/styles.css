@@ -38,7 +38,6 @@
   opacity: 0;
   transition: opacity 0.5s;
   border-radius: 10px;
-
   padding: 0.5em;
 }
 
@@ -83,4 +82,5 @@ main .card__container:nth-child(4n + 4) .card__overlay {
 .card__overlay--description {
   font-size: 1.25em;
   margin-top: 0.25em;
+  text-align: center;
 }

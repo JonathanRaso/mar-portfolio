@@ -8,8 +8,6 @@ import LoadingSpinner from '../shared/loading/index.js';
 import '../../App.css';
 import './styles.css';
 
-/* const HomeCard = lazy(() => import('../home-card/index.js')); */
-
 const Home = () => {
 
   const [loadedProjects, setLoadedProjects] = useState(null);
@@ -31,7 +29,6 @@ const Home = () => {
     };
     fetchProjects();
   }, []); 
-
 
   return (
     <main>
@@ -58,19 +55,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/* <main className="homepage__body">
-      {loadedProjects && 
-        loadedProjects.map((project) => {
-          return (
-            <HomeCard 
-              key={project.id}
-              id={project.id}
-              title={project.title}
-              description={project.description}
-              imageUrl={project.imageUrl}
-            />
-          )
-        })
-      }
-    </main> */

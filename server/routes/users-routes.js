@@ -1,5 +1,4 @@
 const express = require('express');
-// TODO Create fileUpload middleware and import it here
 
 const userController = require('../controllers/userController');
 

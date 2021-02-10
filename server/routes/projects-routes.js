@@ -1,7 +1,6 @@
 const express = require('express');
 const { check } = require('express-validator');
 
-// TODO Create fileUpload middleware and import it here
 const fileUpload = require('../middleware/file-upload');
 
 const projectsController = require('../controllers/projectsController');

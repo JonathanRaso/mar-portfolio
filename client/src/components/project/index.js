@@ -104,7 +104,6 @@ const ProjectDetails = () => {
       setBackgroundColor(colorsArray[Math.floor(Math.random() * colorsArray.length)]);
     };
     backgroundInfoColor(randomColors);
-    console.log('result: ' + backgroundColor);
   }, [backgroundColor]);
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import './styles.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const HomeCard = ({id, title, description, imageUrl}) => {
 
@@ -17,6 +18,8 @@ const HomeCard = ({id, title, description, imageUrl}) => {
               width="300px"
               height="400px"
               threshold="0"
+              effet="blur"
+              placeholder=""
             />
           <div className="card__overlay">
             <h2 className="card__overlay--title">{`${title.substring(0, 25)}`}</h2>

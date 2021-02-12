@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import './styles.css';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const HomeCard = ({id, title, description, imageUrl}) => {
 
@@ -11,14 +10,12 @@ const HomeCard = ({id, title, description, imageUrl}) => {
       <Link to={`/${id}`}>
         <div key={id} className="card__body">
             <LazyLoadImage 
-              //TODO ===> Reaplce src when deploying
-              src={`http://localhost:5000/${imageUrl}`}
+              src={`${process.env.REACT_APP_ASSET_URL}/${imageUrl}`}
               alt={title}
               className="card__body--image"
               width="300px"
               height="400px"
               threshold="0"
-              effet="blur"
               placeholder=""
             />
           <div className="card__overlay">

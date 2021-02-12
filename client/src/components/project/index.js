@@ -10,14 +10,19 @@ import '../../App.css';
 import './styles.css';
 
 const ProjectDetails = () => {
+  // Getting id of the project with useParams()
   let { projectId } = useParams();
   const history = useHistory();
 
   const { login } = useContext(AuthContext);
 
+  // Setting specific project data
   const [specificProject, setSpecificProject] = useState();
+
+  // Setting random background color
   const [backgroundColor, setBackgroundColor] = useState();
 
+  // Setting title and description of the project (for editing)
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -31,21 +36,21 @@ const ProjectDetails = () => {
   const [loading, setLoading] = useState(false);
 
   const handleDeleteButton = async () => {
-    
+    // Set loading == true during delete request
     setLoading(true);
 
+    // Try deleting project. If successful, display success message and redirect
+    // If unsuccessful, display error message
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${projectId}`);
-
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/projects/${projectId}`);
       setLoading(false);
-      setCreationResult("Suppression réussie! ");
+      setCreationResult("Suppression réussie!");
       setTimeout(() => {
         setCreationResult("");
         history.push('/');
-      }, 3500);
+      }, 3000);
 
     } catch (error) {
-      console.log(error);
       setLoading(false);
       setCreationResult("La suppression a échoué, veuillez recommencer.");
     }
@@ -60,44 +65,34 @@ const ProjectDetails = () => {
     let editedTitle = title;
     let editedDescription = description;
 
-    // 2 - Check if one of the input is missing. If so, add previous data in order to send something complete to the server.
+    // 3 - Check if one of the input is missing. If so, add previous data in order to send something complete to the server.
     // If not, express-validator will send 500 response because he needs a title and a description with at least 3 and 15 characters.
     if (editedTitle.length === 0) {
       editedTitle = specificProject.title;
-      console.log("titre non renseigné");
     };
 
     if (editedDescription.length === 0) {
       editedDescription = specificProject.description;
-      console.log("description non renseignée");
     };
 
-    // 3 - Async patch request to update infos inside DB and redirect admin to homepage if request successful.
+    // 4 - Async patch request to update infos inside DB and redirect admin to homepage if request successful.
     try {
-      console.log(editedTitle, editedDescription);
-      const response = await axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title : editedTitle, description: editedDescription });
-      /* const response = await axios.patch(`http://localhost:5000/api/projects/${projectId}`, { title, description }); */
-      console.log(title, description);
-      /* console.log("titre : " + editedTitle, "description : " + editedDescription) */
-      console.log(response);
-      /* console.log(response.data); */
-      /* console.log(specificProject.title, specificProject.description); */
+      await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/projects/${projectId}`, { title : editedTitle, description: editedDescription });
       setLoading(false);
-      setCreationResult("Modification réussie! ");
+      setCreationResult("Modification réussie!");
 
       setTimeout(() => {
         setCreationResult("");
         history.push('/');
-      }, 3500);
+      }, 3000);
 
     } catch (error) {
-      console.log(error);
       setLoading(false);
       setCreationResult("La modification a échoué, veuillez recommencer.");
     }
-    /* return history.push("/"); */
   }
 
+  // useEffect for random background color.
   useEffect(() => {
     const randomColors = ['first', 'second', 'third', 'fourth'];
     const backgroundInfoColor = (colorsArray) => {
@@ -106,19 +101,19 @@ const ProjectDetails = () => {
     backgroundInfoColor(randomColors);
   }, [backgroundColor]);
 
+  // useEffect for fetching specific project data, using projectId to know which one to fetch.
   useEffect(() => {
     const fetchSpecificProject = async () => {
       setPreLoading(true);
       try {
-        const projectData = await axios.get(`http://localhost:5000/api/projects/${projectId}`);
-        
+        const projectData = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${projectId}`);
         setSpecificProject(projectData.data.project);
         setPreLoading(false);
       } catch (err) {
-        console.log(err, ' Ce projet ne se trouve pas sur le site');
         setPreLoading(false);
       }
     }
+
     fetchSpecificProject();
   }, [projectId]);
 
@@ -179,7 +174,7 @@ const ProjectDetails = () => {
         <div className={`project__picture project__picture--${backgroundColor}`}>
           {specificProject &&
           <>
-            <img src={`http://localhost:5000/${specificProject.imageUrl}`} alt={specificProject.title}/>
+            <img src={`${process.env.REACT_APP_ASSET_URL}/${specificProject.imageUrl}`} alt={specificProject.title}/>
           </>
           }
         </div>
@@ -187,7 +182,7 @@ const ProjectDetails = () => {
           {specificProject &&
           <>
             <h2 className="project__info--title">{specificProject.title}</h2>
-            <p className="project__info--description">{specificProject.description}. Minima quasi iste nobis unde adipisci totam ullam quaerat! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, eaque ipsa?</p>
+            <p className="project__info--description">{specificProject.description}</p>
           </> 
           }
         </div>

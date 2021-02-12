@@ -12,7 +12,6 @@ const port = process.env.PORT || 5000;
 
 const projectsRoutes = require('./routes/projects-routes');
 const usersRoutes = require('./routes/users-routes');
-/* const { cookie } = require('express-validator'); */
 
 const app = express();
 
@@ -77,7 +76,7 @@ mongoose
   )
   .then(() => {
     app.listen(port);
-    console.log(`Server ON. Connection to Database DONE!`);
+    console.log(`Server ON : ${port}. Connection to Database DONE!`);
   })
   .catch((err) => {
     console.log(err);

@@ -36,7 +36,7 @@ const Infos = () => {
         <div className="infos__social">
           <h3 className="infos__social--title">Me contacter</h3>
           <p className="infos__social--text">
-            Pour me contacter, vous pouvez m'envoyer un mail à cette adresse : <strong>pascmic@live.fr</strong>
+            Pour me contacter, vous pouvez m'envoyer un mail à cette adresse : <strong>pascaleras@outlook.fr</strong>
           </p>
           <p className="infos__social--icons">
             Vous pouvez également me retrouver sur les réseaux sociaux pour voir mon travail ou échanger.
@@ -50,7 +50,8 @@ const Infos = () => {
             </a>
             <a 
               href="https://www.pinterest.fr/raso_m/" 
-              target="_blank" rel="noreferrer"
+              target="_blank" 
+              rel="noreferrer"
             >
               <img src="/MAR-portfolio-pinterest.png" alt="pinterest logo"/>
             </a>

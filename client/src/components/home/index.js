@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 import HomeCard from '../home-card/index.js';
 import LoadingSpinner from '../shared/loading/index.js';
 
@@ -14,19 +13,19 @@ const Home = () => {
 
   const [loading, setLoading] = useState();
 
+  // useEffect for fetching all projects when page load for first time.
   useEffect(() => {
     const fetchProjects = async () => {
       setLoading(true);
       try {
-        const projectsRequest = await axios.get('http://localhost:5000/api/projects');
-
+        const projectsRequest = await axios.get(process.env.REACT_APP_BACKEND_URL + '/projects');
         setLoadedProjects(projectsRequest.data.projects);
         setLoading(false);
       } catch (err) {
-        console.log(err);
         setLoading(false);
       }
     };
+
     fetchProjects();
   }, []); 
 

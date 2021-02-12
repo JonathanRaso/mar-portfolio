@@ -1,9 +1,4 @@
 main {
-  /* flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 5.5em; */
-  /* background-color: brown; */
-  /* border: 2px solid black; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;

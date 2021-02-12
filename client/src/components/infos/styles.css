@@ -10,7 +10,6 @@
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
-
 .infos__container h3 {
   text-transform: uppercase;
   margin-top: 0.5em;
@@ -66,7 +65,9 @@
   margin: 0 5px;
 }
 
-/* @media screen and (min-width: 37.50em) 65.625em */
+/********************
+*** Media Queries ***
+********************/
 
 @media screen and (min-width: 43em) {
   .infos__container {

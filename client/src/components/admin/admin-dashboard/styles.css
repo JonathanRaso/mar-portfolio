@@ -38,7 +38,6 @@
 .dashboard__label {
   margin: 0.5rem auto;
   text-decoration: underline;
-  /* font-size: var(--fs-small); */
 }
 
 .dashboard__input {
@@ -87,7 +86,6 @@
 
 .dashboard__label--file:hover {
   background-color: var(--clr-black);
-  /* color: var(--clr-second); */
 }
 
 .dashboard__filename {

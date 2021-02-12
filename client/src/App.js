@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/shared/navbar/index.js';
@@ -18,10 +18,6 @@ function App() {
   const [login, setLogin] = useState(false);
 
   const isLogged = useMemo(() => ({ login, setLogin }), [login, setLogin]);
-
-  /*TODO ==> add errorMessage to context api*/
-  /* const [creationResult, setCreationResult] = useState("test");
-  const errorMessage = useMemo(() => ({ creationResult, setCreationResult }), [creationResult, setCreationResult]); */
 
   return (
     <AuthContext.Provider value={isLogged}>

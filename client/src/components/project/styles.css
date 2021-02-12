@@ -42,7 +42,6 @@ DASHBOARD DIV
   color: var(--clr-black);
   border-radius: 5px;
   width: 80%;
-  /* text-shadow: var(--ts-basic); */
   box-shadow: var(--bs-basic);
 }
 
@@ -50,14 +49,9 @@ DASHBOARD DIV
 PROJECT__PICTURE DIV
 ***************/
 .project__container {
-  /* background-color: brown; */
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
   margin: 0 auto;
-  /* height: 100%; */
-  /* padding: 50px; */
 }
 
 .project__picture {
@@ -127,16 +121,9 @@ PROJECT__INFO DIV
   TABLET MEDIA QUERIES
 ******************/
 @media screen and (min-width: 43em) {
-  /* main::after{
-    content: none;
-  } */
 
   .project__container {
-    /* display: flex; */
     width: 80%;
-    /* margin-left: auto;
-    margin-right: auto;
-    margin-top: 0; */
     margin: 0 auto;
     justify-content: center;
     align-items: center;
@@ -147,7 +134,6 @@ PROJECT__INFO DIV
   ***************/
   .project__picture {
     display: flex;
-    /* border: 1px solid #dadada; */
     border-radius: 16px;
     padding: 35px 10px;
     width: 100%;
@@ -176,13 +162,6 @@ PROJECT__INFO DIV
     box-shadow: var(--bs-basic);
     text-align: center;
   }
-
-  /* .project__info--first,
-  .project__info--second,
-  .project__info--third,
-  .project__info--fourth {
-    background-image: none;
-  } */
 }
 
 /****************** 
@@ -195,7 +174,6 @@ PROJECT__INFO DIV
   }
   
   .admin__button:hover {
-  /* margin: 1rem auto 0; */
   background-color: var(--clr-second);
   color: var(--clr-white);
   border: 2px solid black;
@@ -204,48 +182,20 @@ PROJECT__INFO DIV
 
   .project__container {
     flex-direction: row;
-    /* width: 80%; */
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: 7em; */
     align-items: center;
   }
 
   /***************
   PROJECT__PICTURE DIV
   ***************/
-  /* .project__info {
-    border-radius: 10px;
-    margin: 1rem auto;
-    padding: 2.5rem;
-    box-shadow: var(--bs-basic);
-    text-align: center;
-    width: 100%;
-  } */
   .project__picture {
-    /* display: flex;
-    border: 1px solid #dadada;
-    border-radius: 16px;
-    padding: 35px; */
     width: 750px;
     height: 750px;
-    /* width: 80%;
-    height: 80%; */
     margin-left: auto;
     margin-right: auto;
-    /* justify-content: center;
-    align-self: center;
-    box-shadow: var(--bs-basic); */
   }
-
-  /* .project__picture img {
-    width: 80%;
-    height: 80%;
-    border: 5px solid #fff;
-    align-self: center;
-    transition: transform .5s;
-    box-shadow: var(--bs-basic);
-  } */
 
   .project__picture img:hover {
     transform: scale(1.2);
@@ -262,9 +212,5 @@ PROJECT__INFO DIV
     box-shadow: var(--bs-basic);
     text-align: center;
     overflow: hidden;
-
-    /* align-self: center;
-    overflow: hidden;
-    max-height: 75%; */
   }
 }

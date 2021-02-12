@@ -11,10 +11,13 @@ import './styles.css';
 
 const AdminDashboard = () => {
 
+  // Getting login value (true or false) from context hook
   const { login, setLogin } = useContext(AuthContext);
 
+  // Used for redirecting admin.
   const history = useHistory();
 
+  // Display Loading Spinner if loading == true;
   const [loading, setLoading] = useState(false);
 
   // Login form state
@@ -29,56 +32,57 @@ const AdminDashboard = () => {
   // Display file name before form submit
   const [fileName, setFileName] = useState("");
 
-  // TODO ==> add to context
   // Display error/success message
   const [creationResult, setCreationResult] = useState("");
-  
-  const handleSubmitLoginForm = (event) => {
+
+  const handleSubmitLoginForm = async (event) => {
+    // Prevent submit default behaviour and set loading to true
     event.preventDefault();
-    setLoading(true);  
-    /* TODO ==> Replace .then.catch with async try and catch */
-    axios.post("http://localhost:5000/api/users/login", { username, password })
-    .then(function (response) {
+    setLoading(true); 
+    
+    // Send username/password to backend and change login/loading state if request successful or not
+    try {
+      await axios.post(process.env.REACT_APP_BACKEND_URL + '/users/login', { username, password });
       setLogin(true);
       setLoading(false);
       setCreationResult("");
-    })
-    .catch(function (error) {
+    } catch (error) {
       setLoading(false);
       setCreationResult("La connexion a échoué, veuillez recommencer.");
-    });  
+    }  
   }
 
   const handleFileChange = (event) => {
+    // set imageFile value and get file name to display on creation form
     setImageFile(event.target.files[0]);
     setFileName(event.target.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1]);
   }
 
   const handleSubmitCreateForm = async (event) => {
+
+    // Prevent submit default behaviour and set loading to true
     event.preventDefault();
     setLoading(true);
 
     try {
+      // Add data sent by client to formData.
+      // Send post request with data.
+      // If successful, display message and redirect to homepage
       const formData = new FormData();
       formData.append('title', title);
       formData.append('description', description);
       formData.append('imageUrl', imageFile);
-      const response = await axios.post("http://localhost:5000/api/projects/add-project", formData );
-      /* TODO ==> Remove console.log(response) */
-      console.log(response);
-      console.log(response.status);
-      console.log(response.data.message);
+      await axios.post(process.env.REACT_APP_BACKEND_URL + '/projects/add-project', formData );
       setLoading(false);
       setCreationResult("Création du projet réussie! Redirection en cours.");
 
       setTimeout(() => {
         setCreationResult("");
         history.push('/');
-      }, 3500);
+      }, 3000);
 
     } catch (error) {
-      console.log(error);
-      console.log(error.message);
+      // If unsuccessful, display error message.
       setLoading(false);
       setCreationResult("La création du projet a échoué, veuillez recommencer.");
     }

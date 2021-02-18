@@ -145,7 +145,6 @@ const ProjectDetails = () => {
                 placeholder="3 caractères min"
                 onChange={(event) => {
                   setTitle(event.target.value);
-                  console.log('edited title is : ' + title)
                 }}
               />
 
@@ -159,7 +158,6 @@ const ProjectDetails = () => {
                 placeholder="15 caractères min" 
                 onChange={(event) => {
                   setDescription(event.target.value);
-                  console.log('edited description is : ' + description)
                 }} 
               />
 

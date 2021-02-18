@@ -33,7 +33,6 @@ const createProject = async (req, res, next) => {
   // Look into the request object and see if there are any validations error based on the config inside projects-routes.js
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    console.log(errors);
     return next(new Error ('Données renseignées invalides.'));
   }
   

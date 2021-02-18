@@ -147,7 +147,7 @@ const AdminDashboard = () => {
                 placeholder="3 caractères min" 
                 value={title} 
                 onChange={(event) => {
-                  setTitle(event.target.value); console.log('title is : ' + title);
+                  setTitle(event.target.value);
                 }}
                 required
               />
@@ -160,7 +160,7 @@ const AdminDashboard = () => {
                 placeholder="15 caractères min" 
                 value={description} 
                 onChange={(event) => {
-                  setDescription(event.target.value); console.log('description is : ' + description);
+                  setDescription(event.target.value);
                 }} 
                 required
               />
